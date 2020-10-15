@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class ControllerInput : MonoBehaviour
 {
-    enum availableControllers
+    static public int available = 0; // Will always be available anywhere.
+
+    [HideInInspector] 
+    public enum availableControllers
     {
         Controller1 = 1,
         Controller2,
         Controller3,
         Controller4
     };
+
+    [Header("Player Configuration")]
 
     // The reason I serialized a public string is because it will put it in the editor even if its inherited.
     [SerializeField] private availableControllers selectedController = availableControllers.Controller1;
@@ -22,6 +27,11 @@ public class ControllerInput : MonoBehaviour
     {
         controllerInput = selectedController.ToString();
         controllerExists = ControllerExists();
+
+        if (controllerExists)
+        {
+            ControllerInput.available += 1;
+        }
 
         Debug.Log(controllerInput + " : " + controllerExists);
     }
@@ -39,5 +49,11 @@ public class ControllerInput : MonoBehaviour
     public float GetVerticalAxis()
     {
         return (controllerExists) ? Input.GetAxis(controllerInput + "_Vertical") : 0;
+    }
+
+    public void UpdateCameraPosition(Camera cam, int cams)
+    {
+        // Welcome to cancer!
+        cam.rect = ControllerInputConfig.splitScreenController[cams - 2].splits[(int)selectedController - 1].viewPort;
     }
 }
