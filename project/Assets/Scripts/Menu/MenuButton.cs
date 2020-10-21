@@ -86,6 +86,7 @@ public class MenuButton : MonoBehaviour
 
             if (ready == dissapears.Length)
             {
+                ControllerInput.available -= 1;
                 UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneTo);
             }
         }
