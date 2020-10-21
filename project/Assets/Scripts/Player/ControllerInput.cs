@@ -51,6 +51,16 @@ public class ControllerInput : MonoBehaviour
         return (controllerExists) ? Input.GetAxis(controllerInput + "_Vertical") : 0;
     }
 
+    public float GetRightTrigger()
+    {
+        return (controllerExists) ? Input.GetAxis(controllerInput + "_R_Trigger") : 0;
+    }
+
+    public bool Clicking()
+    {
+        return controllerExists ? (GetRightTrigger() < 0) : true;
+    }
+
     public void UpdateCameraPosition(Camera cam, int cams)
     {
         // Welcome to cancer!
