@@ -46,9 +46,19 @@ public class ControllerInput : MonoBehaviour
         return (controllerExists) ? Input.GetAxis(controllerInput + "_Horizontal") : 0;
     }
 
+    public float GetRHorizontalAxis()
+    {
+        return (controllerExists) ? Input.GetAxis(controllerInput + "_R_Horizontal") : 0;
+    }
+
     public float GetVerticalAxis()
     {
         return (controllerExists) ? Input.GetAxis(controllerInput + "_Vertical") : 0;
+    }
+
+    public float GetRVerticalAxis()
+    {
+        return (controllerExists) ? Input.GetAxis(controllerInput + "_R_Vertical") : 0;
     }
 
     public float GetRightTrigger()

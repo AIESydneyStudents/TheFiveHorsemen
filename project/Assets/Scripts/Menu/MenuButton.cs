@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class MenuButton : MonoBehaviour
 {
-    [SerializeField] private float lerpSpeed = 1f;
-    [SerializeField] private JoystickMouse joystick;
-    [SerializeField] private Transform fall;
-    [SerializeField] private Vector3 fallBack;
-    [SerializeField] private bool shouldFall;
-    [SerializeField] private int sceneTo;
+    private Vector3 startPos;
+    private bool finished = false;
 
     [System.Serializable]
     public struct dissapear
@@ -19,9 +15,13 @@ public class MenuButton : MonoBehaviour
         public float timeLeft;
     }
 
+    [SerializeField] private float lerpSpeed = 1f;
+    [SerializeField] private JoystickMouse joystick;
+    [SerializeField] private Transform fall;
+    [SerializeField] private Vector3 fallBack;
+    [SerializeField] private bool shouldFall;
+    [SerializeField] private int sceneTo;
     [SerializeField] private dissapear[] dissapears;
-    private Vector3 startPos;
-    private bool finished = false;
 
     // Start is called before the first frame update
     void Start()
@@ -86,6 +86,7 @@ public class MenuButton : MonoBehaviour
 
             if (ready == dissapears.Length)
             {
+                ControllerInput.available -= 1;
                 UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneTo);
             }
         }

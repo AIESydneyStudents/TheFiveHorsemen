@@ -11,6 +11,7 @@ public class Player : ControllerInput
     private int controllerCache = 0;
 
     private CharacterController controller;
+    private Vector3 startPos;
 
     [SerializeField] private float moveSpeed = 6.0F;
     [SerializeField] private float gravity = 6.0F;
@@ -19,7 +20,7 @@ public class Player : ControllerInput
     public override void Start()
     {
         base.Start();
-
+        startPos = transform.position;
         controller = GetComponent<CharacterController>();
     }
 
@@ -32,17 +33,21 @@ public class Player : ControllerInput
 
         //transform.Rotate(0, xPos, 0);
 
-        moveDirection = transform.forward;
+        moveDirection = followCam.transform.forward;
         moveDirection *= yPos;
 
-        Vector3 right = transform.right;
+        Vector3 right = followCam.transform.right;
         right *= xPos;
 
         moveDirection = right + moveDirection;
 
-        moveDirection.y -= Time.deltaTime * gravity;
+        moveDirection.y -= Time.deltaTime * gravity * 100;
 
         controller.Move(moveDirection * moveSpeed * Time.deltaTime);
+
+        followCam.transform.LookAt(transform);
+        followCam.transform.RotateAround(transform.position, new Vector3(0.0f, 1.0f, 0.0f), 3 * GetRHorizontalAxis());
+        //followCam.transform.Translate(Vector3.right * GetRHorizontalAxis());
 
         xPos = 0;
         yPos = 0;
@@ -56,6 +61,11 @@ public class Player : ControllerInput
         {
             controllerCache = ControllerInput.available;
             UpdateCameraPosition(followCam, ControllerInput.available);
+        }
+
+        if (transform.position.y <= -3.3)
+        {
+            transform.position = startPos;
         }
     }
 }
