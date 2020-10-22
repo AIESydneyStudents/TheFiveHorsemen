@@ -34,11 +34,20 @@ public class ControllerInput : MonoBehaviour
         }
 
         Debug.Log(controllerInput + " : " + controllerExists);
+        
     }
 
-    public bool ControllerExists()
+    public bool ControllerExists() // Jank
     {
-        return (Input.GetJoystickNames().Length + 1) > (int)selectedController;
+        bool exists = false;
+        int select = (int)selectedController - 1;
+
+        if (Input.GetJoystickNames().Length > select && Input.GetJoystickNames()[select].Length > 0)
+        {
+            exists = true;
+        }
+
+        return exists;
     }
 
     public float GetHorizontalAxis()

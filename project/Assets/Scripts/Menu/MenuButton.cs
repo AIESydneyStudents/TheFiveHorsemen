@@ -22,6 +22,8 @@ public class MenuButton : MonoBehaviour
     [SerializeField] private bool shouldFall;
     [SerializeField] private int sceneTo;
     [SerializeField] private dissapear[] dissapears;
+    [SerializeField] private Vector3 cameraPos;
+    [SerializeField] private Vector3 cameraAng;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +45,7 @@ public class MenuButton : MonoBehaviour
         else return false;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!joystick.Clicking() && !finished)
         {
@@ -53,17 +55,20 @@ public class MenuButton : MonoBehaviour
             }
             else transform.position = Vector3.Lerp(transform.position, startPos, Time.deltaTime * lerpSpeed);
         }
-        else if (!finished && shouldFall)
+        else if (joystick.Clicking() && !finished && ButtonHover())
         {
-            foreach (Transform child in fall)
+            if (shouldFall)
             {
-                Rigidbody go;
-                child.gameObject.TryGetComponent(out go);
-
-                if (!go)
+                foreach (Transform child in fall)
                 {
-                    go = child.gameObject.AddComponent(typeof(Rigidbody)) as Rigidbody;
-                    go.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+                    Rigidbody go;
+                    child.gameObject.TryGetComponent(out go);
+
+                    if (!go)
+                    {
+                        go = child.gameObject.AddComponent(typeof(Rigidbody)) as Rigidbody;
+                        go.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+                    }
                 }
             }
 
@@ -86,7 +91,10 @@ public class MenuButton : MonoBehaviour
 
             if (ready == dissapears.Length)
             {
-                ControllerInput.available -= 1;
+                //Camera.main.transform.position = cameraPos;
+                //Camera.main.transform.position = cameraAng;
+                gameObject.SetActive(false);
+                ControllerInput.available = 0;
                 UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneTo);
             }
         }
