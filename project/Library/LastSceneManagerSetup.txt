@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/SandBox/Callum Test Level 2.unity
+- path: Assets/SandBox/Aaron Test.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
