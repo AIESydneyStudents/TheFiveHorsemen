@@ -904,6 +904,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2055820855968151820, guid: 9db8f3b275530b246b236ffb396c1b86,
+        type: 3}
+      propertyPath: _playerSettings.globalJumpHeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055820855968151820, guid: 9db8f3b275530b246b236ffb396c1b86,
+        type: 3}
+      propertyPath: _playerSettings.globalGravity
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2055820855968151821, guid: 9db8f3b275530b246b236ffb396c1b86,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1469,13 +1479,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af5c6b62f01dfc418ba11943fa8fdd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpSpeed: 1
-  joystick: {fileID: 0}
-  fall: {fileID: 0}
-  fallBack: {x: 0, y: 0, z: 0}
-  shouldFall: 0
-  sceneTo: 0
-  dissapears: []
+  lerpSpeed: 3
+  joystick: {fileID: 1473084882}
+  fall: {fileID: 1918377846}
+  fallBack: {x: 0, y: 0, z: -0.1}
+  shouldFall: 1
+  sceneTo: 1
+  dissapears:
+  - name: 
+    goAway: {fileID: 1513947568}
+    timeLeft: 0
+  - name: 
+    goAway: {fileID: 894939417}
+    timeLeft: 0.5
+  - name: 
+    goAway: {fileID: 1206027145}
+    timeLeft: 1
+  - name: 
+    goAway: {fileID: 1676826801}
+    timeLeft: 1.5
+  - name: 
+    goAway: {fileID: 1894151559}
+    timeLeft: 4
   cameraPos: {x: 0, y: 0, z: 0}
   cameraAng: {x: 0, y: 0, z: 0}
 --- !u!65 &1338595142
@@ -1776,7 +1801,7 @@ MonoBehaviour:
   selectedController: 1
   cursorPosX: 600
   cursorPosY: 800
-  mouseSpeed: 1
+  mouseSpeed: 15
 --- !u!114 &1473084883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2021,13 +2046,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af5c6b62f01dfc418ba11943fa8fdd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpSpeed: 1
-  joystick: {fileID: 0}
-  fall: {fileID: 0}
-  fallBack: {x: 0, y: 0, z: 0}
-  shouldFall: 0
-  sceneTo: 0
-  dissapears: []
+  lerpSpeed: 3
+  joystick: {fileID: 1473084882}
+  fall: {fileID: 1918377846}
+  fallBack: {x: 0, y: 0, z: -0.1}
+  shouldFall: 1
+  sceneTo: 1
+  dissapears:
+  - name: 
+    goAway: {fileID: 1513947568}
+    timeLeft: 0
+  - name: 
+    goAway: {fileID: 894939417}
+    timeLeft: 0.5
+  - name: 
+    goAway: {fileID: 1206027145}
+    timeLeft: 1
+  - name: 
+    goAway: {fileID: 1676826801}
+    timeLeft: 1.5
+  - name: 
+    goAway: {fileID: 1894151559}
+    timeLeft: 4
   cameraPos: {x: 0, y: 0, z: 0}
   cameraAng: {x: 0, y: 0, z: 0}
 --- !u!65 &1542212428
@@ -4016,13 +4056,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af5c6b62f01dfc418ba11943fa8fdd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpSpeed: 1
-  joystick: {fileID: 0}
-  fall: {fileID: 0}
-  fallBack: {x: 0, y: 0, z: 0}
-  shouldFall: 0
-  sceneTo: 0
-  dissapears: []
+  lerpSpeed: 3
+  joystick: {fileID: 1473084882}
+  fall: {fileID: 1918377846}
+  fallBack: {x: 0, y: 0, z: -0.1}
+  shouldFall: 1
+  sceneTo: 1
+  dissapears:
+  - name: 
+    goAway: {fileID: 1513947568}
+    timeLeft: 0
+  - name: 
+    goAway: {fileID: 894939417}
+    timeLeft: 0.5
+  - name: 
+    goAway: {fileID: 1206027145}
+    timeLeft: 1
+  - name: 
+    goAway: {fileID: 1676826801}
+    timeLeft: 1.5
+  - name: 
+    goAway: {fileID: 1894151559}
+    timeLeft: 4
   cameraPos: {x: 0, y: 0, z: 0}
   cameraAng: {x: 0, y: 0, z: 0}
 --- !u!1 &893693077790631364
