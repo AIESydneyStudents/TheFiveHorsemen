@@ -32,6 +32,7 @@ public class PlayerManager : MonoBehaviour
         public float globalMoveSpeed;
         public float globalTurnSpeed;
         public float globalGravity;
+        public float globalJumpHeight;
     }
 
     [Header("Settings")]
