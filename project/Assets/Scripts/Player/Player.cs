@@ -85,9 +85,6 @@ public class Player : ControllerInput
         followCam.transform.RotateAround(transform.position, new Vector3(0.0f, 1.0f, 0.0f), turnSpeed * GetRHorizontalAxis());
 
         Vector3 rot = followCam.transform.eulerAngles;
-        rot.x = 0;
-        rot.y += 90;
-        rot.z = 0;
 
         character.eulerAngles = rot;
         //followCam.transform.Translate(Vector3.right * GetRHorizontalAxis());
