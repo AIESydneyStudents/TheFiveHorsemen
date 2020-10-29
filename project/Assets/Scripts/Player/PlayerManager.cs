@@ -28,11 +28,14 @@ public class PlayerManager : MonoBehaviour
     [System.Serializable]
     public struct settingsInfo
     {
-        public bool shouldOverride;
         public float globalMoveSpeed;
         public float globalTurnSpeed;
         public float globalGravity;
         public float globalJumpHeight;
+        public float globalFriction;
+        public float globalPushStrength;
+        public float globalDashStrength;
+        public bool debug;
     }
 
     [Header("Settings")]

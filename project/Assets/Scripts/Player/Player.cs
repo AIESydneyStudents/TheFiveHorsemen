@@ -5,7 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class Player : ControllerInput
 {
+    #region Properties
     private Vector3 moveDirection = Vector3.zero;
+    private Vector3 velocity = Vector3.zero;
+    private bool dashing = false;
+
     private float xPos = 0f;
     private float yPos = 0f;
     private int controllerCache = 0;
@@ -16,42 +20,46 @@ public class Player : ControllerInput
     private float pushCooldown = 0;
     private bool jumping = false;
 
-    [SerializeField] private float moveSpeed = 6.0F;
-    [SerializeField] private float turnSpeed = 6.0F;
-    [SerializeField] private float gravity = 6.0F;
-    [SerializeField] private float jumpHeight = 10.0F;
     [SerializeField] private Camera followCam;
     [SerializeField] private Transform cameraAnchor;
     [SerializeField] private Transform character;
+    #endregion
 
     public override void Start()
     {
         base.Start();
 
-        if (PlayerManager.settings.shouldOverride)
-        {
-            moveSpeed = PlayerManager.settings.globalMoveSpeed;
-            turnSpeed = PlayerManager.settings.globalTurnSpeed;
-            gravity = PlayerManager.settings.globalGravity;
-            jumpHeight = PlayerManager.settings.globalJumpHeight;
-        }
-
         startPos = transform.position;
         controller = GetComponent<CharacterController>();
-
-        if (!controllerExists) gameObject.SetActive(false);
     }
 
+    #region Functionality
+    /// <summary>
+    /// Adding velocity to the player.
+    /// </summary>
+    /// <param name="vel">Vector3 directional velocity to add.</param>
+    public void AddVelocity(Vector3 vel)
+    {
+        velocity += vel;
+    }
+
+    /// <summary>
+    /// Moving function.
+    /// </summary>
     private void Move()
     {
-        if (!controllerExists) return;
+        float moveSpeed = PlayerManager.settings.globalMoveSpeed;
+        float turnSpeed = PlayerManager.settings.globalTurnSpeed;
+        float gravity = PlayerManager.settings.globalGravity;
+        float jumpHeight = PlayerManager.settings.globalJumpHeight;
+        float friction = PlayerManager.settings.globalFriction;
 
         xPos += GetHorizontalAxis();
         yPos += GetVerticalAxis();
 
         //transform.Rotate(0, xPos, 0);
 
-        moveDirection = new Vector3(followCam.transform.forward.x * yPos, jumping ? moveDirection.y : 0, followCam.transform.forward.z * yPos);
+        moveDirection = new Vector3(followCam.transform.forward.x * yPos + velocity.x, (jumping ? moveDirection.y : 0) + velocity.y, followCam.transform.forward.z * yPos + velocity.z);
 
         Vector3 right = followCam.transform.right;
         right *= xPos;
@@ -84,10 +92,23 @@ public class Player : ControllerInput
         character.eulerAngles = rot;
         //followCam.transform.Translate(Vector3.right * GetRHorizontalAxis());
 
+        float mult = friction/100;
+
+        if (velocity.x > 0.1 || velocity.x < -0.1)
+            velocity.x = velocity.x > 0.1 ? velocity.x - mult : velocity.x + mult;
+        else velocity.x = 0;
+
+        if (velocity.z > 0.1 || velocity.z < -0.1)
+            velocity.z = velocity.z > 0.1 ? velocity.z - mult : velocity.z + mult;
+        else velocity.z = 0;
+
         xPos = 0;
         yPos = 0;
     }
 
+    /// <summary>
+    /// Pushing other players/objects function.
+    /// </summary>
     void Push()
     {
         RaycastHit hit;
@@ -99,24 +120,43 @@ public class Player : ControllerInput
 
         if (Physics.Raycast(transform.position, dir, out hit, 0.5f, layerMask))
         {
-            CharacterController rb;
+            Player rb;
 
             if (hit.transform.TryGetComponent(out rb))
             {
-                rb.Move(dir * 2f);
+                rb.AddVelocity(dir * PlayerManager.settings.globalPushStrength);
             }
-
-            pushCooldown = 1;
         }
     }
 
+    /// <summary>
+    /// Function runner.
+    /// </summary>
     void FixedUpdate()
     {
+        if (!PlayerManager.settings.debug && !controllerExists) gameObject.SetActive(false);
+
         Move();
 
-        if (pushCooldown > 0) pushCooldown -= Time.deltaTime; 
+        if (pushCooldown > 0) pushCooldown -= Time.deltaTime;
 
-        if (Clicking() && pushCooldown <= 0) Push();
+        if (dashing)
+        {
+            if (pushCooldown <= 0) dashing = false;
+
+            Push();
+        }
+
+        if (!dashing && Clicking() && pushCooldown <= 0)
+        {
+            pushCooldown = 3;
+            dashing = true;
+
+            Vector3 dir = followCam.transform.forward;
+            dir.y = 0;
+
+            AddVelocity(dir * PlayerManager.settings.globalDashStrength);
+        }
 
         if (controllerCache != ControllerInput.available)
         {
@@ -127,6 +167,30 @@ public class Player : ControllerInput
         if (transform.position.y <= -3.3)
         {
             transform.position = startPos;
+            velocity = Vector3.zero;
+            dashing = false;
+        }
+
+        {
+            RaycastHit hit;
+
+            int layerMask = 1 << 9;
+            layerMask = ~layerMask;
+
+            float distance = 3.16f;
+
+            Vector3 origin = cameraAnchor.position;
+            Vector3 direction = followCam.transform.forward * -1;
+            Vector3 final = origin + (direction * distance);
+
+            if (PlayerManager.settings.debug) Debug.DrawLine(origin, final, Color.red);
+
+            if (Physics.Raycast(origin, direction, out hit, distance, layerMask))
+            { 
+                followCam.transform.position = hit.point; 
+            }
+            else followCam.transform.position = final;
         }
     }
+    #endregion
 }
