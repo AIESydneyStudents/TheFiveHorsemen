@@ -1473,7 +1473,7 @@ MonoBehaviour:
   joystick: {fileID: 1473084882}
   fall: {fileID: 1918377846}
   fallBack: {x: 0, y: 0, z: -0.1}
-  shouldFall: 1
+  shouldFall: 0
   sceneTo: 1
   dissapears:
   - name: 
@@ -2040,7 +2040,7 @@ MonoBehaviour:
   joystick: {fileID: 1473084882}
   fall: {fileID: 1918377846}
   fallBack: {x: 0, y: 0, z: -0.1}
-  shouldFall: 1
+  shouldFall: 0
   sceneTo: 1
   dissapears:
   - name: 
@@ -2507,6 +2507,75 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1676826801}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1706374662
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3307995506032375650, guid: 0c63e94adf5097d42a8693b88d936a6d,
+        type: 3}
+      propertyPath: m_Name
+      value: Controller Config
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307995506032375652, guid: 0c63e94adf5097d42a8693b88d936a6d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.3921466
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307995506032375652, guid: 0c63e94adf5097d42a8693b88d936a6d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.2790022
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307995506032375652, guid: 0c63e94adf5097d42a8693b88d936a6d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.7017533
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307995506032375652, guid: 0c63e94adf5097d42a8693b88d936a6d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307995506032375652, guid: 0c63e94adf5097d42a8693b88d936a6d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307995506032375652, guid: 0c63e94adf5097d42a8693b88d936a6d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307995506032375652, guid: 0c63e94adf5097d42a8693b88d936a6d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307995506032375652, guid: 0c63e94adf5097d42a8693b88d936a6d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307995506032375652, guid: 0c63e94adf5097d42a8693b88d936a6d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307995506032375652, guid: 0c63e94adf5097d42a8693b88d936a6d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307995506032375652, guid: 0c63e94adf5097d42a8693b88d936a6d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0c63e94adf5097d42a8693b88d936a6d, type: 3}
 --- !u!1 &1879628370
 GameObject:
   m_ObjectHideFlags: 0
@@ -4051,7 +4120,7 @@ MonoBehaviour:
   fall: {fileID: 1918377846}
   fallBack: {x: 0, y: 0, z: -0.1}
   shouldFall: 1
-  sceneTo: 1
+  sceneTo: 2
   dissapears:
   - name: 
     goAway: {fileID: 1513947568}

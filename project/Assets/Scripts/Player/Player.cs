@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
 public class Player : ControllerInput
 {
-    #region Properties
+    #region Variables
     private Vector3 moveDirection = Vector3.zero;
     private Vector3 velocity = Vector3.zero;
     private bool dashing = false;
@@ -19,10 +20,14 @@ public class Player : ControllerInput
 
     private float pushCooldown = 0;
     private bool jumping = false;
+    #endregion
 
+    #region Editor Fields
     [SerializeField] private Camera followCam;
+    [SerializeField] private float abilityCooldown = 3;
     [SerializeField] private Transform cameraAnchor;
     [SerializeField] private Transform character;
+    [SerializeField] private Slider cooldown;
     #endregion
 
     public override void Start()
@@ -31,6 +36,8 @@ public class Player : ControllerInput
 
         startPos = transform.position;
         controller = GetComponent<CharacterController>();
+
+        cooldown.maxValue = abilityCooldown;
     }
 
     #region Functionality
@@ -136,6 +143,7 @@ public class Player : ControllerInput
         Move();
 
         if (pushCooldown > 0) pushCooldown -= Time.deltaTime;
+        cooldown.value = Mathf.Clamp(pushCooldown, 0, abilityCooldown);
 
         if (dashing)
         {
@@ -146,7 +154,7 @@ public class Player : ControllerInput
 
         if (!dashing && Clicking() && pushCooldown <= 0)
         {
-            pushCooldown = 3;
+            pushCooldown = abilityCooldown;
             dashing = true;
 
             Vector3 dir = followCam.transform.forward;

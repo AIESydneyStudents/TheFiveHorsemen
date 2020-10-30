@@ -95,7 +95,9 @@ public class MenuButton : MonoBehaviour
                 //Camera.main.transform.position = cameraAng;
                 gameObject.SetActive(false);
                 ControllerInput.available = 0;
-                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneTo);
+
+                int level = Random.Range(1, sceneTo + 1);
+                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(level);
             }
         }
     }
