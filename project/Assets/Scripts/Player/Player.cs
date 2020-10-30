@@ -20,6 +20,12 @@ public class Player : ControllerInput
 
     private float pushCooldown = 0;
     private bool jumping = false;
+
+    private bool dead = false;
+    private float respawnTimer = -1;
+    private GameObject rag = null;
+    private bool ragdolled = false;
+    private float ragdollTimer = 0;
     #endregion
 
     #region Editor Fields
@@ -27,6 +33,7 @@ public class Player : ControllerInput
     [SerializeField] private float abilityCooldown = 3;
     [SerializeField] private Transform cameraAnchor;
     [SerializeField] private Transform character;
+    [SerializeField] private GameObject ragdoll;
     [SerializeField] private Slider cooldown;
     #endregion
 
@@ -51,6 +58,59 @@ public class Player : ControllerInput
     }
 
     /// <summary>
+    /// Ragdoll the player.
+    /// </summary>
+    public void Ragdoll()
+    {
+        if (ragdolled)
+        {
+            Destroy(rag);
+            character.gameObject.SetActive(true);
+            rag = null;
+            ragdolled = false;
+        }
+        else
+        {
+            rag = Instantiate(ragdoll, transform);
+            character.gameObject.SetActive(false);
+            ragdolled = true;
+        }
+    }
+
+    /// <summary>
+    /// Death functionality
+    /// </summary>
+    /// <param name="respawnTime">Time to respawn.</param>
+    public void Die(float respawnTime)
+    {
+        if (respawnTimer > 0)
+        {
+            respawnTimer -= Time.deltaTime;
+
+            return;
+        }
+        else if (respawnTimer > -1)
+        {
+            transform.position = startPos;
+            respawnTimer = -1;
+            dead = false;
+            ragdollTimer = 0;
+            velocity = Vector3.zero;
+
+            if (ragdolled) Ragdoll();
+
+            return;
+        }
+
+        respawnTimer = respawnTime;
+        velocity = Vector3.zero;
+        dashing = false;
+        dead = true;
+
+        if (!ragdolled) Ragdoll();
+    }
+
+    /// <summary>
     /// Moving function.
     /// </summary>
     private void Move()
@@ -61,9 +121,17 @@ public class Player : ControllerInput
         float jumpHeight = PlayerManager.settings.globalJumpHeight;
         float friction = PlayerManager.settings.globalFriction;
 
-        xPos += GetHorizontalAxis();
-        yPos += GetVerticalAxis();
+        if (ragdollTimer > 0)
+        {
+            ragdollTimer -= Time.deltaTime;
+        }
+        else
+        {
+            if (ragdolled) Ragdoll();
 
+            xPos += GetHorizontalAxis();
+            yPos += GetVerticalAxis();
+        }
         //transform.Rotate(0, xPos, 0);
 
         moveDirection = new Vector3(followCam.transform.forward.x * yPos + velocity.x, (jumping ? moveDirection.y : 0) + velocity.y, followCam.transform.forward.z * yPos + velocity.z);
@@ -106,6 +174,8 @@ public class Player : ControllerInput
             velocity.z = velocity.z > 0.1 ? velocity.z - mult : velocity.z + mult;
         else velocity.z = 0;
 
+        //if (ragdolled) Ragdoll();
+
         xPos = 0;
         yPos = 0;
     }
@@ -129,6 +199,9 @@ public class Player : ControllerInput
             if (hit.transform.TryGetComponent(out rb))
             {
                 rb.AddVelocity(dir * PlayerManager.settings.globalPushStrength);
+                if (!rb.ragdolled) rb.Ragdoll();
+
+                rb.ragdollTimer = 3;
             }
         }
     }
@@ -138,7 +211,21 @@ public class Player : ControllerInput
     /// </summary>
     void FixedUpdate()
     {
+        if (GetBackButton())
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
+
+            return;
+        }
+
         if (!PlayerManager.settings.debug && !controllerExists) gameObject.SetActive(false);
+
+        if (dead || transform.position.y <= -3.3)
+        {
+            Die(3);
+
+            return;
+        }
 
         Move();
 
@@ -147,7 +234,10 @@ public class Player : ControllerInput
 
         if (dashing)
         {
-            if (pushCooldown <= 0) dashing = false;
+            if (pushCooldown <= 0) 
+            { 
+                dashing = false;
+            }
 
             Push();
         }
@@ -167,13 +257,6 @@ public class Player : ControllerInput
         {
             controllerCache = ControllerInput.available;
             UpdateCameraPosition(followCam, ControllerInput.available);
-        }
-
-        if (transform.position.y <= -3.3)
-        {
-            transform.position = startPos;
-            velocity = Vector3.zero;
-            dashing = false;
         }
 
         {
