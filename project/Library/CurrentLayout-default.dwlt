@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 6}
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 0
 --- !u!114 &2
@@ -150,7 +150,7 @@ MonoBehaviour:
     y: 0
     width: 1904
     height: 981
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &7
 MonoBehaviour:
@@ -338,20 +338,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/SandBox/DevPrefabs
+    - Assets/Scripts/Player/30_10
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/SandBox/DevPrefabs
+  - Assets/Scripts/Player/30_10
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\s192110\Desktop\30.10\TheFiveHorsemen\project
+  m_LastProjectPath: C:\Users\s200503\Desktop\Python Panic\TheFiveHorsemen\project
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 943e0000
-    m_LastClickedID: 16020
-    m_ExpandedIDs: 000000004e3e0000503e0000523e0000543e0000563e00008e3e000000ca9a3b
+    scrollPos: {x: 0, y: 201}
+    m_SelectedIDs: 6c610000
+    m_LastClickedID: 24940
+    m_ExpandedIDs: 00000000f8600000fa600000fc600000fe600000006100003c6100004a610000626100006861000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -379,7 +379,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000004e3e0000503e0000523e0000543e0000563e0000
+    m_ExpandedIDs: 00000000f8600000fa600000fc600000fe60000000610000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -423,7 +423,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 5}
+      m_ClientGUIView: {fileID: 0}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -501,33 +501,33 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 12580}
+      scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: b033ffff068affffeadeffff88dfffff6a860000
+      m_ExpandedIDs: 4e38feff6a38feff6c38feff623cfeff723cfeff263ffeff423ffeff4440feff3a44feff5244feffce4cfeffce4dfefff84efeff7a50feff5ca8feff1e00ffff8653ffffe2abffffc2acffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Railing (5)
-        m_OriginalName: Railing (5)
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 36224
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 4}
+        m_ClientGUIView: {fileID: 0}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
     m_LockTracker:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
-  m_WindowGUID: ed926e0c2feb17a4f8e5acb9e3f05746
+  m_WindowGUID: 7c079c949b06ca14fa65d0f089262777
 --- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -555,7 +555,7 @@ MonoBehaviour:
     height: 542
   m_ViewDataDictionary: {fileID: 0}
   m_ShowContextualTools: 0
-  m_WindowGUID: 39ea9108f48db1f429778aca7ec4e8f6
+  m_WindowGUID: 0eb1e40e33e3e574cad7cc2db3ad784c
   m_Gizmos: 1
   m_SceneIsLit: 1
   m_SceneLighting: 1
@@ -564,13 +564,13 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -17.07825, y: 6.9094067, z: 40.733093}
+    m_Target: {x: 44.226227, y: -33.5391, z: 109.33699}
     speed: 2
-    m_Value: {x: -17.07825, y: 6.9094067, z: 40.733093}
+    m_Value: {x: 44.226227, y: -33.5391, z: 109.33699}
   m_RenderMode: 0
   m_CameraMode:
-    drawMode: 2
-    name: Shaded Wireframe
+    drawMode: 0
+    name: Shaded
     section: Shading Mode
   m_ValidateTrueMetals: 0
   m_DoValidateTrueMetals: 0
@@ -599,7 +599,7 @@ MonoBehaviour:
         m_Value: 1
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
-      m_Size: {x: 0.125, y: 0.125}
+      m_Size: {x: 1, y: 1}
     zGrid:
       m_Fade:
         m_Target: 0
@@ -612,13 +612,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.19929707, y: 0.67945135, z: -0.20083925, w: 0.67721426}
+    m_Target: {x: 0.18378052, y: 0.38606527, z: -0.07878374, w: 0.90055656}
     speed: 2
-    m_Value: {x: 0.19956528, y: 0.6783232, z: -0.20050709, w: 0.6781211}
+    m_Value: {x: 0.18401323, y: 0.383356, z: -0.07823085, w: 0.9016969}
   m_Size:
-    m_Target: 6.1109514
+    m_Target: 106.73688
     speed: 2
-    m_Value: 6.1109514
+    m_Value: 102.14056
   m_Ortho:
     m_Target: 0
     speed: 2

@@ -85,6 +85,11 @@ public class ControllerInput : MonoBehaviour
         return (controllerExists) ? Input.GetButton(controllerInput + "_Jump") : false;
     }
 
+    public bool GetBackButton()
+    {
+        return (controllerExists) ? Input.GetButton(controllerInput + "_Back") : false;
+    }
+
     public void UpdateCameraPosition(Camera cam, int cams)
     {
         // Welcome to cancer!
