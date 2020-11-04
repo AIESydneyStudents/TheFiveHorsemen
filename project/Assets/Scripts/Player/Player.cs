@@ -234,7 +234,8 @@ public class Player : ControllerInput
 
         if (dashing)
         {
-            if (pushCooldown <= 0) 
+            if (pushCooldown <= 2.5)
+                //if (pushCooldown <= 0)
             { 
                 dashing = false;
             }
