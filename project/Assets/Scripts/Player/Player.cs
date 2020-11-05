@@ -26,6 +26,11 @@ public class Player : ControllerInput
     private GameObject rag = null;
     private bool ragdolled = false;
     private float ragdollTimer = 0;
+
+    //Aaron's stuff
+    public ParticleSystem dashPuff;
+    public Animator animator_test_A;
+    //Aarons stuff end
     #endregion
 
     #region Editor Fields
@@ -45,6 +50,7 @@ public class Player : ControllerInput
         controller = GetComponent<CharacterController>();
 
         cooldown.maxValue = abilityCooldown;
+        transform.Rotate(0, -90, 0);
     }
 
     #region Functionality
@@ -152,6 +158,30 @@ public class Player : ControllerInput
             jumping = false;
         }
         
+        //aaron code fort animations
+        if (moveDirection.z > 0)
+        {
+            animator_test_A.SetBool("Running", true);
+        }
+        else if (moveDirection.z < 0)
+        {
+            animator_test_A.SetBool("Running", true);
+        }
+        else
+        {
+            animator_test_A.SetBool("Running", false);
+        }
+       //**
+        //if (moveDirection.z == 0)
+        //{
+        //    animator_test_A.SetBool("idle", true);
+        //}
+        //else
+        //{
+          //  animator_test_A.SetBool("idle", false);
+        //}
+        //
+
         moveDirection.y -= Time.deltaTime * gravity * (jumping ? 1 : 10);
 
         controller.Move(moveDirection * moveSpeed * Time.deltaTime);
@@ -206,6 +236,11 @@ public class Player : ControllerInput
         }
     }
 
+    void CreateDust()
+    {
+        dashPuff.Play();
+    }
+
     /// <summary>
     /// Function runner.
     /// </summary>
@@ -239,9 +274,21 @@ public class Player : ControllerInput
             { 
                 dashing = false;
             }
-
             Push();
+            CreateDust();
         }
+
+       // if (dashing)
+      //  {
+       //     if (pushCooldown <= 2.99)
+            //if (pushCooldown <= 0)
+       //     {
+       //         dashing = false;
+       //     }
+            
+       //     CreateDust();
+      //  }
+
 
         if (!dashing && Clicking() && pushCooldown <= 0)
         {
