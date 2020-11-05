@@ -6,6 +6,7 @@ public class MenuButton : MonoBehaviour
 {
     private Vector3 startPos;
     private bool finished = false;
+    public int brickValue;
 
     [System.Serializable]
     public struct dissapear
@@ -47,6 +48,8 @@ public class MenuButton : MonoBehaviour
 
     void FixedUpdate()
     {
+        
+
         if (!joystick.Clicking() && !finished)
         {
             if (ButtonHover())
@@ -89,7 +92,7 @@ public class MenuButton : MonoBehaviour
                 }
             }
 
-            if (ready == dissapears.Length)
+            if (brickValue == 2)
             {
                 //Camera.main.transform.position = cameraPos;
                 //Camera.main.transform.position = cameraAng;
@@ -99,6 +102,16 @@ public class MenuButton : MonoBehaviour
                 int level = Random.Range(1, sceneTo + 1);
                 UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(level);
             }
+
+            if (brickValue == 1)
+            {
+                Application.Quit();
+            }
+
+            //if (Brickvalue == 3)
+            //{
+
+            //}
         }
     }
 }

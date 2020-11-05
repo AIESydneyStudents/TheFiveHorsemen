@@ -1469,12 +1469,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af5c6b62f01dfc418ba11943fa8fdd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brickValue: 3
   lerpSpeed: 3
   joystick: {fileID: 1473084882}
   fall: {fileID: 1918377846}
   fallBack: {x: 0, y: 0, z: -0.1}
-  shouldFall: 0
-  sceneTo: 1
+  shouldFall: 1
+  sceneTo: 3
   dissapears:
   - name: 
     goAway: {fileID: 1513947568}
@@ -2036,11 +2037,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af5c6b62f01dfc418ba11943fa8fdd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brickValue: 1
   lerpSpeed: 3
   joystick: {fileID: 1473084882}
   fall: {fileID: 1918377846}
   fallBack: {x: 0, y: 0, z: -0.1}
-  shouldFall: 0
+  shouldFall: 1
   sceneTo: 1
   dissapears:
   - name: 
@@ -4115,6 +4117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af5c6b62f01dfc418ba11943fa8fdd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brickValue: 2
   lerpSpeed: 3
   joystick: {fileID: 1473084882}
   fall: {fileID: 1918377846}

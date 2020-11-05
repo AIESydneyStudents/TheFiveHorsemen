@@ -1,8 +1,12 @@
 sceneSetups:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 - path: Assets/SandBox/Aaron/411/A_Level2.unity
 =======
 - path: Assets/SandBox/Callum/Callum Test Level 2 5.11.20.unity
+>>>>>>> Stashed changes
+=======
+- path: Assets/SandBox/Aaron/5.11/A_Level3.unity
 >>>>>>> Stashed changes
   isLoaded: 1
   isActive: 1
