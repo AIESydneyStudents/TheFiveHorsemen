@@ -27,19 +27,21 @@ public class Player : ControllerInput
     private bool ragdolled = false;
     private float ragdollTimer = 0;
 
-    //Aaron's stuff
-    public ParticleSystem dashPuff;
-    public Animator animator_test_A;
-    //Aarons stuff end
+    private bool climbing = false;
+
+    private bool finished = false;
     #endregion
 
     #region Editor Fields
+    [SerializeField] private ParticleSystem dashPuff;
+    [SerializeField] private Animator animator_test_A;
     [SerializeField] private Camera followCam;
     [SerializeField] private float abilityCooldown = 3;
     [SerializeField] private Transform cameraAnchor;
     [SerializeField] private Transform character;
     [SerializeField] private GameObject ragdoll;
     [SerializeField] private Slider cooldown;
+    [SerializeField] private GameObject wonOverlay;
     #endregion
 
     public override void Start()
@@ -117,6 +119,25 @@ public class Player : ControllerInput
     }
 
     /// <summary>
+    /// Animating the player
+    /// </summary>
+    private void Animate()
+    {
+        if (moveDirection.z > 0)
+        {
+            animator_test_A.SetBool("Running", true);
+        }
+        else if (moveDirection.z < 0)
+        {
+            animator_test_A.SetBool("Running", true);
+        }
+        else
+        {
+            animator_test_A.SetBool("Running", false);
+        }
+    }
+
+    /// <summary>
     /// Moving function.
     /// </summary>
     private void Move()
@@ -157,32 +178,29 @@ public class Player : ControllerInput
             moveDirection.y = 0;
             jumping = false;
         }
-        
+
+        if (!controller.isGrounded)
+        {
+            Climb(yPos);
+        }
+
+        Animate();
         //aaron code fort animations
-        if (moveDirection.z > 0)
-        {
-            animator_test_A.SetBool("Running", true);
-        }
-        else if (moveDirection.z < 0)
-        {
-            animator_test_A.SetBool("Running", true);
-        }
-        else
-        {
-            animator_test_A.SetBool("Running", false);
-        }
-       //**
+
+        //**
         //if (moveDirection.z == 0)
         //{
         //    animator_test_A.SetBool("idle", true);
         //}
         //else
         //{
-          //  animator_test_A.SetBool("idle", false);
+        //  animator_test_A.SetBool("idle", false);
         //}
         //
 
-        moveDirection.y -= Time.deltaTime * gravity * (jumping ? 1 : 10);
+        if (!climbing)
+            moveDirection.y -= Time.deltaTime * gravity * (jumping ? 1 : 10);
+        //else moveDirection.y += 1 * Time.deltaTime;
 
         controller.Move(moveDirection * moveSpeed * Time.deltaTime);
 
@@ -236,7 +254,37 @@ public class Player : ControllerInput
         }
     }
 
-    void CreateDust()
+
+    /// <summary>
+    /// Climbing.
+    /// </summary>
+    public void Climb(float forward)
+    {
+        RaycastHit hit;
+
+        int layerMask = 1 << 10;
+
+        Vector3 dir = followCam.transform.forward;
+        dir.y = 0;
+
+        if (Physics.Raycast(transform.position, dir, out hit, 0.5f, layerMask))
+        {
+            climbing = true;
+            moveDirection.y += 10 * forward * Time.deltaTime;
+        }
+        else climbing = false;
+    }
+
+    public void EndGame()
+    {
+        wonOverlay.SetActive(true);
+        finished = true;
+    }
+
+    /// <summary>
+    /// Creating dust.
+    /// </summary>
+    private void CreateDust()
     {
         dashPuff.Play();
     }
@@ -253,6 +301,7 @@ public class Player : ControllerInput
             return;
         }
 
+        if (finished) return;
         if (!PlayerManager.settings.debug && !controllerExists) gameObject.SetActive(false);
 
         if (dead || transform.position.y <= -3.3)
@@ -290,7 +339,7 @@ public class Player : ControllerInput
       //  }
 
 
-        if (!dashing && Clicking() && pushCooldown <= 0)
+        if (!dashing && Clicking() && pushCooldown <= 0 && controller.isGrounded)
         {
             pushCooldown = abilityCooldown;
             dashing = true;

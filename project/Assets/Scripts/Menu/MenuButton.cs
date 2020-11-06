@@ -48,8 +48,6 @@ public class MenuButton : MonoBehaviour
 
     void FixedUpdate()
     {
-        
-
         if (!joystick.Clicking() && !finished)
         {
             if (ButtonHover())
