@@ -1,9 +1,5 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/SandBox/Jacob/6_11/CodeTest.unity
-=======
-- path: Assets/SandBox/Aaron/6.11/A_IdolLevel.unity
->>>>>>> 8f3c1ead9ff993e78ff27e632c13ab276c0e9a8d
+- path: Assets/SandBox/Aaron/6.11/A_Level4.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

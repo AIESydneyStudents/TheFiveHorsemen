@@ -16,5 +16,5 @@ MonoBehaviour:
   m_SnapSettings:
     m_SnapValue: {x: 0.125, y: 0.125, z: 0.125}
     m_SnapMultiplier: {x: 2048, y: 2048, z: 2048}
-    m_Rotation: 7.5
+    m_Rotation: 45
     m_Scale: 0.25
