@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/SandBox/Aaron/6.11/A_Level4.unity
+- path: Assets/SandBox/Aaron/6.11/A_IdolLevel.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
