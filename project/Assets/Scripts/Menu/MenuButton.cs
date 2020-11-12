@@ -25,6 +25,7 @@ public class MenuButton : MonoBehaviour
     [SerializeField] private dissapear[] dissapears;
     [SerializeField] private Vector3 cameraPos;
     [SerializeField] private Vector3 cameraAng;
+    [SerializeField] private AudioSource fallAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +55,10 @@ public class MenuButton : MonoBehaviour
             {
                 transform.position = Vector3.Lerp(transform.position, startPos - fallBack, Time.deltaTime * lerpSpeed);
             }
-            else transform.position = Vector3.Lerp(transform.position, startPos, Time.deltaTime * lerpSpeed);
+            else
+            {
+                transform.position = Vector3.Lerp(transform.position, startPos, Time.deltaTime * lerpSpeed);
+            }
         }
         else if (joystick.Clicking() && !finished && ButtonHover())
         {
@@ -79,6 +83,8 @@ public class MenuButton : MonoBehaviour
         {
             int ready = 0;
 
+            if (!fallAudio.isPlaying) fallAudio.Play();
+
             for (int i = 0; i < dissapears.Length; i++)
             {
                 dissapears[i].timeLeft -= Time.deltaTime;
@@ -90,22 +96,24 @@ public class MenuButton : MonoBehaviour
                 }
             }
 
-            if (brickValue == 2)
+            if (ready == dissapears.Length)
             {
-                //Camera.main.transform.position = cameraPos;
-                //Camera.main.transform.position = cameraAng;
-                gameObject.SetActive(false);
-                ControllerInput.available = 0;
+                if (brickValue == 2)
+                {
+                    //Camera.main.transform.position = cameraPos;
+                    //Camera.main.transform.position = cameraAng;
+                    gameObject.SetActive(false);
+                    ControllerInput.available = 0;
 
-                int level = Random.Range(1, sceneTo + 1);
-                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(level);
+                    int level = Random.Range(1, sceneTo + 1);
+                    UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(level);
+                }
+
+                if (brickValue == 1)
+                {
+                    Application.Quit();
+                }
             }
-
-            if (brickValue == 1)
-            {
-                Application.Quit();
-            }
-
             //if (Brickvalue == 3)
             //{
 

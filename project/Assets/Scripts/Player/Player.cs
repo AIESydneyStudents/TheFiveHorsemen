@@ -34,6 +34,7 @@ public class Player : ControllerInput
 
     #region Editor Fields
     [SerializeField] private ParticleSystem dashPuff;
+    [SerializeField] private ParticleSystem pushPuff;
     [SerializeField] private Animator animator_test_A;
     [SerializeField] private Camera followCam;
     [SerializeField] private float abilityCooldown = 3;
@@ -63,6 +64,15 @@ public class Player : ControllerInput
     public void AddVelocity(Vector3 vel)
     {
         velocity += vel;
+    }
+
+    /// <summary>
+    /// Set player velocity.
+    /// </summary>
+    /// <param name="vel">Vector3 directional velocity to set.</param>
+    public void SetVelocity(Vector3 vel)
+    {
+        velocity = vel;
     }
 
     /// <summary>
@@ -168,16 +178,20 @@ public class Player : ControllerInput
 
         moveDirection = right + moveDirection;
 
-        if (GetJumpButton() && controller.isGrounded && !jumping)
+        if (GetJumpButton() && controller.isGrounded && !jumping && !dead && !ragdolled)
         {
             jumping = true;
             moveDirection.y = jumpHeight;
+
+            animator_test_A.SetBool("Running", false);
+            animator_test_A.SetBool("Jump", true);
         }
         else if (jumping && controller.isGrounded)
         {
             moveDirection.y = 0;
             jumping = false;
         }
+        else animator_test_A.SetBool("Jump", false);
 
         if (!controller.isGrounded)
         {
@@ -199,16 +213,25 @@ public class Player : ControllerInput
         //
 
         if (!climbing)
+        {
             moveDirection.y -= Time.deltaTime * gravity * (jumping ? 1 : 10);
+        }
         //else moveDirection.y += 1 * Time.deltaTime;
 
-        controller.Move(moveDirection * moveSpeed * Time.deltaTime);
+        if (transform.parent != null && !jumping && !ragdolled && GetHorizontalAxis() == 0 && GetVerticalAxis() == 0 && velocity.x == 0 && velocity.y == 0)
+        {
+            animator_test_A.SetBool("Running", false);
+            animator_test_A.SetBool("Idle", true);
+            //return;
+        }
+        else controller.Move(moveDirection * moveSpeed * Time.deltaTime);
 
         followCam.transform.LookAt(cameraAnchor);
         followCam.transform.RotateAround(transform.position, new Vector3(0.0f, 1.0f, 0.0f), turnSpeed * GetRHorizontalAxis());
 
         Vector3 rot = followCam.transform.eulerAngles;
-
+        rot.x = 0;
+        rot.y += 90f;
         character.eulerAngles = rot;
         //followCam.transform.Translate(Vector3.right * GetRHorizontalAxis());
 
@@ -242,6 +265,9 @@ public class Player : ControllerInput
 
         if (Physics.Raycast(transform.position, dir, out hit, 0.5f, layerMask))
         {
+            pushPuff.transform.position = hit.point;
+            pushPuff.Play();
+
             Player rb;
 
             if (hit.transform.TryGetComponent(out rb))
@@ -270,9 +296,26 @@ public class Player : ControllerInput
         if (Physics.Raycast(transform.position, dir, out hit, 0.5f, layerMask))
         {
             climbing = true;
-            moveDirection.y += 10 * forward * Time.deltaTime;
+            jumping = false;
+            moveDirection.y += 30 * forward * Time.deltaTime;
+
+            animator_test_A.SetBool("Jump", false);
+
+            if (forward == 0)
+            {
+                animator_test_A.SetBool("Running", false);
+                animator_test_A.SetBool("Climb", false);
+            }
+            else animator_test_A.SetBool("Climb", true);
         }
-        else climbing = false;
+        else
+        {
+            if (climbing)
+                moveDirection.y += 5;
+
+            climbing = false;
+            animator_test_A.SetBool("Climb", false);
+        }
     }
 
     public void EndGame()
@@ -339,7 +382,7 @@ public class Player : ControllerInput
       //  }
 
 
-        if (!dashing && Clicking() && pushCooldown <= 0 && controller.isGrounded)
+        if (!dashing && Clicking() && pushCooldown <= 0 && controller.isGrounded && !dead && !ragdolled)
         {
             pushCooldown = abilityCooldown;
             dashing = true;
@@ -348,6 +391,11 @@ public class Player : ControllerInput
             dir.y = 0;
 
             AddVelocity(dir * PlayerManager.settings.globalDashStrength);
+            animator_test_A.SetBool("Run_Push", true);
+        }
+        else
+        {
+            animator_test_A.SetBool("Run_Push", false);
         }
 
         if (controllerCache != ControllerInput.available)
