@@ -1,5 +1,13 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/SandBox/Jacob/6_11/CodeTest.unity
+=======
+<<<<<<< HEAD
+- path: Assets/SandBox/Aaron/6.11/A_Level4.unity
+=======
+- path: Assets/SandBox/Callum/Callum Small Level.unity
+>>>>>>> master
+>>>>>>> 83c6e4b55f4f2da2dfdb9ef3bc4f8b64ab703a9d
   isLoaded: 1
   isActive: 1
   isSubScene: 0
