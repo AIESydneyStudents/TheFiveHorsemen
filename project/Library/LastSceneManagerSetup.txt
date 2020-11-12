@@ -1,5 +1,9 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/SandBox/Aaron/6.11/A_Level4.unity
+=======
+- path: Assets/SandBox/Callum/Callum Small Level.unity
+>>>>>>> master
   isLoaded: 1
   isActive: 1
   isSubScene: 0
