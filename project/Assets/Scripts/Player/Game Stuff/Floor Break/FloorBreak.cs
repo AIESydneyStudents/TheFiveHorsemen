@@ -9,6 +9,7 @@ public class FloorBreak : MonoBehaviour
     private float breakDelay = 0f;
 
     [SerializeField] private float breakTime = 0f;
+    [SerializeField] private AudioSource audio = null;
 
     private void FixedUpdate()
     {
@@ -36,6 +37,9 @@ public class FloorBreak : MonoBehaviour
         {
             breaking = true;
             breakDelay = Time.time + breakTime;
+
+            if (audio)
+                audio.Play();
         }
     }
 }
