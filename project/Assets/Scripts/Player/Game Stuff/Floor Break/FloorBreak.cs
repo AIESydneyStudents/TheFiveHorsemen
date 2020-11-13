@@ -6,9 +6,13 @@ public class FloorBreak : MonoBehaviour
 {
     private bool breaking = false;
     private bool broken = false;
-    private float breakDelay = 0f;
-
+    private float breakDelay = -1f;
+    private float respawnDelay = -1f;
+    
     [SerializeField] private float breakTime = 0f;
+    [SerializeField] private GameObject destroy;
+    [SerializeField] private GameObject instant;
+    [SerializeField] private float respawnTime = 5f;
     [SerializeField] private AudioSource audio = null;
 
     private void FixedUpdate()
@@ -20,14 +24,26 @@ public class FloorBreak : MonoBehaviour
             // Dampen towards the target rotation
             transform.rotation = target;
 
-            if (breakDelay < Time.time)
+            if (breakDelay != -1f && breakDelay < Time.time)
             {
                 broken = true;
                 breaking = false;
-                gameObject.AddComponent<Rigidbody>();
+                destroy.AddComponent<Rigidbody>();
 
-                Destroy(gameObject, 5f);
+                Destroy(destroy, 5f);
+
+                respawnDelay = respawnTime + Time.time;
             }
+        }
+        else if (broken && respawnDelay != -1f && respawnDelay < Time.time)
+        {
+            broken = false;
+            breaking = false;
+            breakDelay = -1f;
+            respawnDelay = -1f;
+
+            transform.rotation = Quaternion.Euler(0,0,0);
+            destroy = Instantiate(instant, transform);
         }
     }
 

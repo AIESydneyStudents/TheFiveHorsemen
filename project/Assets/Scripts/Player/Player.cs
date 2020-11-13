@@ -17,6 +17,7 @@ public class Player : ControllerInput
 
     private CharacterController controller;
     private Vector3 startPos;
+    private Vector3 startCamPos;
 
     private float pushCooldown = 0;
     private bool jumping = false;
@@ -50,6 +51,8 @@ public class Player : ControllerInput
         base.Start();
 
         startPos = transform.position;
+        startCamPos = followCam.transform.localPosition;
+
         controller = GetComponent<CharacterController>();
 
         cooldown.maxValue = abilityCooldown;
@@ -178,6 +181,8 @@ public class Player : ControllerInput
 
         moveDirection = right + moveDirection;
 
+        Animate();
+
         if (GetJumpButton() && controller.isGrounded && !jumping && !dead && !ragdolled)
         {
             jumping = true;
@@ -197,8 +202,6 @@ public class Player : ControllerInput
         {
             Climb(yPos);
         }
-
-        Animate();
         //aaron code fort animations
 
         //**
@@ -225,6 +228,8 @@ public class Player : ControllerInput
             //return;
         }
         else controller.Move(moveDirection * moveSpeed * Time.deltaTime);
+
+        followCam.transform.localPosition = new Vector3(followCam.transform.localPosition.x, startCamPos.y + (-3 * GetRVerticalAxis()), followCam.transform.localPosition.z);
 
         followCam.transform.LookAt(cameraAnchor);
         followCam.transform.RotateAround(transform.position, new Vector3(0.0f, 1.0f, 0.0f), turnSpeed * GetRHorizontalAxis());
@@ -279,7 +284,6 @@ public class Player : ControllerInput
             }
         }
     }
-
 
     /// <summary>
     /// Climbing.
@@ -382,7 +386,7 @@ public class Player : ControllerInput
       //  }
 
 
-        if (!dashing && Clicking() && pushCooldown <= 0 && controller.isGrounded && !dead && !ragdolled)
+        if (!dashing && Clicking() && pushCooldown <= 0 && !dead && !ragdolled)
         {
             pushCooldown = abilityCooldown;
             dashing = true;
