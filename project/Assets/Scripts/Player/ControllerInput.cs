@@ -34,11 +34,20 @@ public class ControllerInput : MonoBehaviour
         }
 
         Debug.Log(controllerInput + " : " + controllerExists);
+        
     }
 
-    public bool ControllerExists()
+    public bool ControllerExists() // Jank
     {
-        return (Input.GetJoystickNames().Length + 1) > (int)selectedController;
+        bool exists = false;
+        int select = (int)selectedController - 1;
+
+        if (Input.GetJoystickNames().Length > select && Input.GetJoystickNames()[select].Length > 0)
+        {
+            exists = true;
+        }
+
+        return exists;
     }
 
     public float GetHorizontalAxis()
@@ -69,6 +78,16 @@ public class ControllerInput : MonoBehaviour
     public bool Clicking()
     {
         return controllerExists ? (GetRightTrigger() < 0) : true;
+    }
+
+    public bool GetJumpButton()
+    {
+        return (controllerExists) ? Input.GetButton(controllerInput + "_Jump") : false;
+    }
+
+    public bool GetBackButton()
+    {
+        return (controllerExists) ? Input.GetButton(controllerInput + "_Back") : false;
     }
 
     public void UpdateCameraPosition(Camera cam, int cams)

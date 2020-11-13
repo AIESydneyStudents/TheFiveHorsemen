@@ -6,6 +6,7 @@ public class MenuButton : MonoBehaviour
 {
     private Vector3 startPos;
     private bool finished = false;
+    public int brickValue;
 
     [System.Serializable]
     public struct dissapear
@@ -22,6 +23,9 @@ public class MenuButton : MonoBehaviour
     [SerializeField] private bool shouldFall;
     [SerializeField] private int sceneTo;
     [SerializeField] private dissapear[] dissapears;
+    [SerializeField] private Vector3 cameraPos;
+    [SerializeField] private Vector3 cameraAng;
+    [SerializeField] private AudioSource fallAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +47,7 @@ public class MenuButton : MonoBehaviour
         else return false;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!joystick.Clicking() && !finished)
         {
@@ -51,19 +55,25 @@ public class MenuButton : MonoBehaviour
             {
                 transform.position = Vector3.Lerp(transform.position, startPos - fallBack, Time.deltaTime * lerpSpeed);
             }
-            else transform.position = Vector3.Lerp(transform.position, startPos, Time.deltaTime * lerpSpeed);
-        }
-        else if (!finished && shouldFall)
-        {
-            foreach (Transform child in fall)
+            else
             {
-                Rigidbody go;
-                child.gameObject.TryGetComponent(out go);
-
-                if (!go)
+                transform.position = Vector3.Lerp(transform.position, startPos, Time.deltaTime * lerpSpeed);
+            }
+        }
+        else if (joystick.Clicking() && !finished && ButtonHover())
+        {
+            if (shouldFall)
+            {
+                foreach (Transform child in fall)
                 {
-                    go = child.gameObject.AddComponent(typeof(Rigidbody)) as Rigidbody;
-                    go.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+                    Rigidbody go;
+                    child.gameObject.TryGetComponent(out go);
+
+                    if (!go)
+                    {
+                        go = child.gameObject.AddComponent(typeof(Rigidbody)) as Rigidbody;
+                        go.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+                    }
                 }
             }
 
@@ -72,6 +82,8 @@ public class MenuButton : MonoBehaviour
         else if (finished)
         {
             int ready = 0;
+
+            if (!fallAudio.isPlaying) fallAudio.Play();
 
             for (int i = 0; i < dissapears.Length; i++)
             {
@@ -86,9 +98,26 @@ public class MenuButton : MonoBehaviour
 
             if (ready == dissapears.Length)
             {
-                ControllerInput.available -= 1;
-                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneTo);
+                if (brickValue == 2)
+                {
+                    //Camera.main.transform.position = cameraPos;
+                    //Camera.main.transform.position = cameraAng;
+                    gameObject.SetActive(false);
+                    ControllerInput.available = 0;
+
+                    int level = Random.Range(1, sceneTo + 1);
+                    UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(level);
+                }
+
+                if (brickValue == 1)
+                {
+                    Application.Quit();
+                }
             }
+            //if (Brickvalue == 3)
+            //{
+
+            //}
         }
     }
 }
