@@ -48,7 +48,11 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
+<<<<<<< Updated upstream
   controlID: 86
+=======
+  controlID: 14
+>>>>>>> Stashed changes
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -219,7 +223,11 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
+<<<<<<< Updated upstream
   controlID: 91
+=======
+  controlID: 15
+>>>>>>> Stashed changes
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -244,7 +252,11 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
+<<<<<<< Updated upstream
   controlID: 92
+=======
+  controlID: 16
+>>>>>>> Stashed changes
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -348,10 +360,17 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
+<<<<<<< Updated upstream
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 9a980000
     m_LastClickedID: 39066
     m_ExpandedIDs: 000000004c9800004e98000050980000529800005498000056980000589800005a9800005c9800005e9800006098000000ca9a3b
+=======
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: f0970000
+    m_LastClickedID: 38896
+    m_ExpandedIDs: 00000000a6970000a8970000aa970000ac970000ae970000b0970000b2970000b4970000b6970000b8970000ba97000000ca9a3b
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -379,7 +398,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< Updated upstream
     m_ExpandedIDs: 000000004c9800004e98000050980000529800005498000056980000589800005a9800005c9800005e98000060980000
+=======
+    m_ExpandedIDs: 00000000a6970000a8970000aa970000ac970000ae970000b0970000b2970000b4970000b6970000b8970000ba970000
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -502,6 +525,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
+<<<<<<< Updated upstream
       m_SelectedIDs: 4e9b0000
       m_LastClickedID: 0
       m_ExpandedIDs: b659ffff
@@ -509,13 +533,26 @@ MonoBehaviour:
         m_UserAcceptedRename: 0
         m_Name: pCylinder2
         m_OriginalName: pCylinder2
+=======
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 5ec9feff6ac9fefff69b0000169c0000
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: Head
+        m_OriginalName: Head
+>>>>>>> Stashed changes
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
+<<<<<<< Updated upstream
         m_UserData: -76632
+=======
+        m_UserData: -79536
+>>>>>>> Stashed changes
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 0
@@ -557,16 +594,22 @@ MonoBehaviour:
   m_ShowContextualTools: 0
   m_WindowGUID: 3663e43912e61c244b5cde22d045e66d
   m_Gizmos: 1
-  m_SceneIsLit: 1
+  m_SceneIsLit: 0
   m_SceneLighting: 1
   m_2DMode: 0
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< Updated upstream
     m_Target: {x: -17.208967, y: 20.992641, z: -18.281567}
     speed: 2
     m_Value: {x: -9.818153, y: 3.7612572, z: -17.014805}
+=======
+    m_Target: {x: -8.689091, y: 4.571824, z: -14.936477}
+    speed: 2
+    m_Value: {x: -8.689091, y: 4.571824, z: -14.936477}
+>>>>>>> Stashed changes
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -579,7 +622,7 @@ MonoBehaviour:
   m_SceneViewState:
     showFog: 1
     showMaterialUpdate: 0
-    showSkybox: 1
+    showSkybox: 0
     showFlares: 1
     showImageEffects: 1
     showParticleSystems: 1
@@ -612,6 +655,7 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
+<<<<<<< Updated upstream
     m_Target: {x: 0.0007392259, y: 0.999234, z: 0.023676692, w: -0.031185592}
     speed: 2
     m_Value: {x: 0.0740054, y: 0.91880244, z: -0.3274038, w: 0.20768264}
@@ -619,13 +663,26 @@ MonoBehaviour:
     m_Target: 10
     speed: 2
     m_Value: 0.063697286
+=======
+    m_Target: {x: 0.024730362, y: -0.8579367, z: 0.041478124, w: 0.51148796}
+    speed: 2
+    m_Value: {x: 0.024668027, y: -0.8586998, z: 0.04151502, w: 0.5101986}
+  m_Size:
+    m_Target: 1.734343
+    speed: 2
+    m_Value: 0.19528604
+>>>>>>> Stashed changes
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
     m_Speed: 1
+<<<<<<< Updated upstream
     m_SpeedNormalized: 0.5
+=======
+    m_SpeedNormalized: 0.49999997
+>>>>>>> Stashed changes
     m_SpeedMin: 0.01
     m_SpeedMax: 2
     m_EasingEnabled: 1
