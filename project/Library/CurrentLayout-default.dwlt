@@ -74,8 +74,13 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 763}
   m_MaxSize: {x: 14002, y: 24063}
   vertical: 0
+<<<<<<< HEAD
   controlID: 34
 --- !u!114 &4
+=======
+  controlID: 15
+--- !u!114 &3
+>>>>>>> master
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,8 +251,13 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 763}
   m_MaxSize: {x: 10001, y: 24063}
   vertical: 1
+<<<<<<< HEAD
   controlID: 35
 --- !u!114 &11
+=======
+  controlID: 16
+--- !u!114 &10
+>>>>>>> master
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -271,8 +281,13 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
+<<<<<<< HEAD
   controlID: 36
 --- !u!114 &12
+=======
+  controlID: 98
+--- !u!114 &11
+>>>>>>> master
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -566,12 +581,13 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Models/Textures
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Models/Textures
+  - Assets
   m_LastFoldersGridSize: -1
+<<<<<<< HEAD
   m_LastProjectPath: C:\Users\s200484\Desktop\PythonPanic\TheFiveHorsemen\project
   m_LockTracker:
     m_IsLocked: 0
@@ -580,6 +596,16 @@ MonoBehaviour:
     m_SelectedIDs: 045b0000
     m_LastClickedID: 23300
     m_ExpandedIDs: 00000000aa5a0000ac5a0000ae5a0000b05a0000b25a0000b45a0000b65a0000b85a0000ba5a0000bc5a0000be5a0000045b000000ca9a3b
+=======
+  m_LastProjectPath: C:\Users\s192110\Desktop\18.11\TheFiveHorsemen\project
+  m_LockTracker:
+    m_IsLocked: 0
+  m_FolderTreeState:
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 24460000
+    m_LastClickedID: 17956
+    m_ExpandedIDs: 000000002446000026460000284600002a4600002c4600002e460000304600003246000034460000364600003846000000ca9a3b
+>>>>>>> master
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: Prefabs
@@ -607,7 +633,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000aa5a0000ac5a0000ae5a0000b05a0000b25a0000b45a0000b65a0000b85a0000ba5a0000bc5a0000be5a0000
+=======
+    m_ExpandedIDs: 000000002446000026460000284600002a4600002c4600002e4600003046000032460000344600003646000038460000
+>>>>>>> master
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -729,6 +759,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
+<<<<<<< HEAD
       scrollPos: {x: 0, y: 4440}
       m_SelectedIDs: 
       m_LastClickedID: 0
@@ -737,16 +768,30 @@ MonoBehaviour:
         m_UserAcceptedRename: 0
         m_Name: SM_Ladder
         m_OriginalName: SM_Ladder
+=======
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 24460000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 34e9ffff
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: 
+        m_OriginalName: 
+>>>>>>> master
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
+<<<<<<< HEAD
         m_UserData: 2135524
+=======
+        m_UserData: 0
+>>>>>>> master
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 5}
       m_SearchString: 

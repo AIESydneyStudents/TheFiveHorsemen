@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Char_snake_Base_Color1
+  m_Name: SM_Fence
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -40,11 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-<<<<<<< HEAD
-        m_Texture: {fileID: 2800000, guid: 728b47c0641db724d9a3b9b6a24fbacd, type: 3}
-=======
-        m_Texture: {fileID: 2800000, guid: f73a27a2d8d2b304db760e6ea5312ce8, type: 3}
->>>>>>> master
+        m_Texture: {fileID: 2800000, guid: 0f192fe9f6233b54c9c7a68f83d801df, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
