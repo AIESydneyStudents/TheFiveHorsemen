@@ -98,14 +98,14 @@ public class MenuButton : MonoBehaviour
 
             if (ready == dissapears.Length)
             {
-                if (brickValue == 2)
+                if (brickValue == 2 || brickValue == 3)
                 {
                     //Camera.main.transform.position = cameraPos;
                     //Camera.main.transform.position = cameraAng;
                     gameObject.SetActive(false);
                     ControllerInput.available = 0;
 
-                    int level = Random.Range(1, sceneTo + 1);
+                    int level = (brickValue == 3) ? sceneTo : Random.Range(1, sceneTo + 1);
                     UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(level);
                 }
 

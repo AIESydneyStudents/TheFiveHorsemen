@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/SandBox/Callum/callum small level 13.11.unity
+- path: Assets/Scenes/Menu.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

@@ -25,8 +25,9 @@ public class Player : ControllerInput
     private bool dead = false;
     private float respawnTimer = -1;
     private GameObject rag = null;
-    private bool ragdolled = false;
-    private float ragdollTimer = 0;
+
+    [HideInInspector] public bool ragdolled = false;
+    [HideInInspector] public float ragdollTimer = 0;
 
     private bool climbing = false;
 
@@ -51,6 +52,9 @@ public class Player : ControllerInput
         base.Start();
 
         startPos = transform.position;
+
+        GameObject newObj = new GameObject("Name");
+
         startCamPos = followCam.transform.localPosition;
 
         controller = GetComponent<CharacterController>();
@@ -174,9 +178,9 @@ public class Player : ControllerInput
         }
         //transform.Rotate(0, xPos, 0);
 
-        moveDirection = new Vector3(followCam.transform.forward.x * yPos + velocity.x, (jumping ? moveDirection.y : 0) + velocity.y, followCam.transform.forward.z * yPos + velocity.z);
+        moveDirection = new Vector3(character.right.x * -yPos + velocity.x, (jumping ? moveDirection.y : 0) + velocity.y, character.right.z * -yPos + velocity.z);
 
-        Vector3 right = followCam.transform.right;
+        Vector3 right = character.forward;
         right *= xPos;
 
         moveDirection = right + moveDirection;
@@ -301,6 +305,8 @@ public class Player : ControllerInput
         {
             climbing = true;
             jumping = false;
+            moveDirection.x = 0;
+            moveDirection.z = 0;
             moveDirection.y += 30 * forward * Time.deltaTime;
 
             animator_test_A.SetBool("Jump", false);
@@ -344,6 +350,7 @@ public class Player : ControllerInput
         if (GetBackButton())
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
+            gameObject.SetActive(false);
 
             return;
         }

@@ -15,6 +15,9 @@ public class PushOnCollide : MonoBehaviour
             Vector3 dir = transform.forward;
 
             ya.AddVelocity(dir * -pushDistance);
+            if (!ya.ragdolled) ya.Ragdoll();
+
+            ya.ragdollTimer = 3;
         }
     }
 }
