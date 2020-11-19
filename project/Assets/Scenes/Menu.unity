@@ -5281,7 +5281,7 @@ MonoBehaviour:
   fall: {fileID: 1918377846}
   fallBack: {x: 0, y: 0, z: -0.1}
   shouldFall: 1
-  sceneTo: 2
+  sceneTo: 1
   dissapears:
   - name: 
     goAway: {fileID: 1513947568}
@@ -7881,7 +7881,7 @@ MonoBehaviour:
   fall: {fileID: 1918377846}
   fallBack: {x: 0, y: 0, z: -0.1}
   shouldFall: 1
-  sceneTo: 3
+  sceneTo: 1
   dissapears:
   - name: 
     goAway: {fileID: 1513947568}

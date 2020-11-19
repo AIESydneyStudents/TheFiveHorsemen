@@ -16,6 +16,8 @@ public class IdolPickup1 : MonoBehaviour
             if (pickuptime == -1f)
             {
                 pickuptime = Time.time + 5f;
+                idolPickup.Play(true);
+                idolPickup.Stop(false);
             }
         }
     }
@@ -29,8 +31,7 @@ public class IdolPickup1 : MonoBehaviour
             if (pickuptime != -1f && pickuptime < Time.time)
             {
                 pickuptime = -1f;
-                idolPickup.Play(true);
-                idolPickup.Stop(false);
+                
                 ya.EndGame();
             }
         }

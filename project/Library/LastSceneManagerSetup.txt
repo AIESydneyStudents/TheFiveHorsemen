@@ -1,34 +1,5 @@
 sceneSetups:
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-- path: Assets/SandBox/Callum/callum small level 13.11.unity
-=======
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-- path: Assets/Scenes/Menu.unity
-=======
-- path: Assets/SandBox/Callum/Callum Level 2 6.11.20.unity
->>>>>>> Stashed changes
-=======
-- path: Assets/SandBox/Callum/SpiralLevel.unity
->>>>>>> Stashed changes
-=======
-- path: Assets/SandBox/Callum/callum small level 13.11.unity
->>>>>>> Stashed changes
-<<<<<<< Updated upstream
-=======
->>>>>>> master
->>>>>>> Stashed changes
-=======
-- path: Assets/Scenes/Menu.unity
->>>>>>> Stashed changes
-=======
 - path: Assets/SandBox/Callum/savedlevel;/callum small level 13.11.unity
->>>>>>> Stashed changes
   isLoaded: 1
   isActive: 1
   isSubScene: 0
