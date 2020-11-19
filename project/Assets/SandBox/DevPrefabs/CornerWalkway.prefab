@@ -122,12 +122,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 100
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
     - target: {fileID: -1504981713932161579, guid: 7a59e1dc5940a5b4799b2c17a7170c8e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: eb0af4bcfbcb02948be521b1a97e3459, type: 2}
     - target: {fileID: -927199367670048503, guid: 7a59e1dc5940a5b4799b2c17a7170c8e,
+=======
+    - target: {fileID: -1504981713932161579, guid: 3d0f47b1ce9b94646918f9e7d713b21a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cca29965c67da844f9a82570fcf0f026, type: 2}
+    - target: {fileID: -927199367670048503, guid: 3d0f47b1ce9b94646918f9e7d713b21a,
+>>>>>>> Stashed changes
         type: 3}
       propertyPath: m_Name
       value: curvedfloortrhin (2)

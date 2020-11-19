@@ -96,7 +96,11 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
+<<<<<<< Updated upstream
   controlID: 137
+>>>>>>> Stashed changes
+=======
+  controlID: 186
 >>>>>>> Stashed changes
 --- !u!114 &4
 MonoBehaviour:
@@ -264,6 +268,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
+<<<<<<< Updated upstream
   controlID: 91
 =======
     width: 1642
@@ -272,6 +277,9 @@ MonoBehaviour:
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
   controlID: 138
+>>>>>>> Stashed changes
+=======
+  controlID: 112
 >>>>>>> Stashed changes
 --- !u!114 &10
 MonoBehaviour:
@@ -298,6 +306,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
+<<<<<<< Updated upstream
   controlID: 92
 =======
     width: 1642
@@ -306,6 +315,9 @@ MonoBehaviour:
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
   controlID: 139
+>>>>>>> Stashed changes
+=======
+  controlID: 113
 >>>>>>> Stashed changes
 --- !u!114 &11
 MonoBehaviour:
@@ -458,6 +470,7 @@ MonoBehaviour:
     m_SearchArea: 1
     m_Folders:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 64
@@ -487,6 +500,22 @@ MonoBehaviour:
     m_SelectedIDs: 56b50000
     m_LastClickedID: 46422
     m_ExpandedIDs: 00000000deb40000e0b40000e2b40000e4b40000e6b40000e8b40000eab40000ecb40000eeb40000f0b40000f2b4000000ca9a3b
+>>>>>>> Stashed changes
+=======
+    - Assets/SandBox/DevPrefabs
+  m_ViewMode: 1
+  m_StartGridSize: 64
+  m_LastFolders:
+  - Assets/SandBox/DevPrefabs
+  m_LastFoldersGridSize: -1
+  m_LastProjectPath: C:\Users\s200484\Desktop\PythonPanic19.11.20\TheFiveHorsemen\project
+  m_LockTracker:
+    m_IsLocked: 0
+  m_FolderTreeState:
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: 345c0000
+    m_LastClickedID: 23604
+    m_ExpandedIDs: 000000002a5c00002c5c00002e5c0000305c0000325c0000345c0000365c0000385c00003a5c00003c5c00003e5c0000bc5c000000ca9a3b
 >>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -610,6 +639,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
+<<<<<<< Updated upstream
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 484d0100
       m_LastClickedID: 0
@@ -626,6 +656,16 @@ MonoBehaviour:
         m_Name: Prism
         m_OriginalName: Prism
 >>>>>>> Stashed changes
+=======
+      scrollPos: {x: 0, y: 1456}
+      m_SelectedIDs: be71fcff906efcfff65ffcffec4cfcff62bafcff264ffcffaea3fcffb4bbfcff36bbfcff02aefcff8059fcff985efcff8ca8fcfff479fcff3a67fcffaea5fcff5065fcffaca5fcff3257fcffe248fcff6ea9fcffe846fcff1c42fcff9041fcff144bfcff5e75fcffecb4fcff54abfcff82a8fcff1479fcff86a8fcffdc48fcffe848fcffbca5fcff86b7fcff8ab7fcffaaa3fcff70a9fcff2242fcffdc6afcffaab6fcffea48fcff0654fcff8c41fcff946efcffe646fcffcc58fcfffe59fcfffaadfcff82b7fcff0041fcffd25afcff9666fcffac76fcffe446fcffbaa5fcffaeb6fcffa2b6fcff7ea9fcff8eb7fcffa455fcffb2a3fcff064efcffb057fcff7452fcffd86afcff74a9fcffb2b8fcff7ca9fcff8e41fcff7843fcfff8b4fcff9c60fcffb6b8fcffb4b8fcff026cfcffda46fcffbc71fcfffe72fcffb03efcff263efcff2861fcff4e65fcfff6adfcfff4adfcff944bfcff006cfcff9e55fcff2653fcff9e4ffcff5250fcffa8b6fcffa051fcff8ea8fcffa83ffcff844afcff5668fcff5eabfcffbca3fcfffeadfcff564cfcffee42fcffb2a5fcffd643fcff6075fcff4a65fcff90a8fcff0241fcfff4b4fcff0641fcff3c3ffcff426dfcfff872fcffb6a3fcff085cfcffaa76fcff406dfcffaac5fcffb8b8fcff1e42fcff5aabfcff7c7d0000847d0000
+      m_LastClickedID: -244006
+      m_ExpandedIDs: ccc6fcff72f9fcff0006fdffbc2efeff2a3efeffcc89feff0ea5feffd861ffffe461ffff6063ffff6a63ffff5069ffffc272ffff8480ffff1eabffff32dcffff4afbffff
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: 
+        m_OriginalName: 
+>>>>>>> Stashed changes
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
@@ -633,9 +673,13 @@ MonoBehaviour:
           width: 0
           height: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         m_UserData: 0
 =======
         m_UserData: 32228
+>>>>>>> Stashed changes
+=======
+        m_UserData: 0
 >>>>>>> Stashed changes
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
@@ -693,6 +737,7 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_Position:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     m_Target: {x: -5.6566463, y: -2.9238372, z: 17.770876}
     speed: 2
     m_Value: {x: -5.6566463, y: -2.9238372, z: 17.770876}
@@ -700,6 +745,11 @@ MonoBehaviour:
     m_Target: {x: -6.1188617, y: 13.798887, z: 0.15012352}
     speed: 2
     m_Value: {x: -6.1188617, y: 13.798887, z: 0.15012354}
+>>>>>>> Stashed changes
+=======
+    m_Target: {x: 45.66767, y: -0.3110962, z: 2.3701296}
+    speed: 2
+    m_Value: {x: 45.66767, y: -0.3110962, z: 2.3701296}
 >>>>>>> Stashed changes
   m_RenderMode: 0
   m_CameraMode:
@@ -747,6 +797,7 @@ MonoBehaviour:
     m_gridOpacity: 0.5
   m_Rotation:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     m_Target: {x: 0.12724353, y: 0.070385076, z: -0.008002824, w: 0.9895693}
     speed: 2
     m_Value: {x: 0.1272145, y: 0.07036902, z: -0.008000999, w: 0.9893436}
@@ -763,13 +814,22 @@ MonoBehaviour:
     speed: 2
     m_Value: 6.8231983
 >>>>>>> Stashed changes
+=======
+    m_Target: {x: -0.4041093, y: 0.5854392, z: -0.4243333, w: -0.5609133}
+    speed: 2
+    m_Value: {x: -0.40312186, y: 0.5858629, z: -0.42330047, w: -0.56131476}
+  m_Size:
+    m_Target: 112.899345
+    speed: 2
+    m_Value: 108.03765
+>>>>>>> Stashed changes
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
-    m_Speed: 2
-    m_SpeedNormalized: 1
+    m_Speed: 1.9
+    m_SpeedNormalized: 0.94000006
     m_SpeedMin: 0.01
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -836,8 +896,13 @@ MonoBehaviour:
     m_HBaseRangeMin: -611.5
     m_HBaseRangeMax: 611.5
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     m_VBaseRangeMin: -269
     m_VBaseRangeMax: 269
+=======
+    m_VBaseRangeMin: -282.5
+    m_VBaseRangeMax: 282.5
+>>>>>>> Stashed changes
 =======
     m_VBaseRangeMin: -282.5
     m_VBaseRangeMax: 282.5
@@ -861,9 +926,15 @@ MonoBehaviour:
       y: 0
       width: 1223
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       height: 538
     m_Scale: {x: 1, y: 1}
     m_Translation: {x: 611.5, y: 269}
+=======
+      height: 565
+    m_Scale: {x: 1, y: 1}
+    m_Translation: {x: 611.5, y: 282.5}
+>>>>>>> Stashed changes
 =======
       height: 565
     m_Scale: {x: 1, y: 1}
@@ -877,9 +948,15 @@ MonoBehaviour:
       serializedVersion: 2
       x: -611.5
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       y: -269
       width: 1223
       height: 538
+=======
+      y: -282.5
+      width: 1223
+      height: 565
+>>>>>>> Stashed changes
 =======
       y: -282.5
       width: 1223
