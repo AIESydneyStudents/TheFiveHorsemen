@@ -1,4 +1,5 @@
 sceneSetups:
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 - path: Assets/SandBox/Callum/callum small level 13.11.unity
 =======
@@ -20,6 +21,9 @@ sceneSetups:
 <<<<<<< Updated upstream
 =======
 >>>>>>> master
+>>>>>>> Stashed changes
+=======
+- path: Assets/Scenes/Menu.unity
 >>>>>>> Stashed changes
   isLoaded: 1
   isActive: 1

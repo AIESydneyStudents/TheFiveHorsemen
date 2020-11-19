@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/SandBox/Jacob/13_11/Dev Scene.unity
     guid: 4f1870b8b216b374f8a505354de69209
   - enabled: 1
-    path: Assets/SandBox/Aaron/6.11/A_Level4.unity
-    guid: ae60a79f6b1d76e4787ef744457b61a4
-  - enabled: 1
-    path: Assets/SandBox/Callum/Callum Level 2 6.11.20.unity
-    guid: 83e8fa6724057cb4fa7fd1b58da58dd8
+    path: Assets/SandBox/Callum/callum small level 13.11.unity
+    guid: c5a3dd9e75a1d544fa137b2270ba1b59
   m_configObjects: {}
