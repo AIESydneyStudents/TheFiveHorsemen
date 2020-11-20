@@ -1,5 +1,9 @@
 sceneSetups:
+<<<<<<< Updated upstream
 - path: Assets/SandBox/Callum/SpiralLevel/SpiralLevelSavingItFromConflicts/SpiralLevelTheGarbage.unity
+=======
+- path: Assets/SandBox/Callum/savedlevel;/callum small level 13.11.unity
+>>>>>>> Stashed changes
   isLoaded: 1
   isActive: 1
   isSubScene: 0
