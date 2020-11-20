@@ -35,6 +35,7 @@ public class PlayerManager : MonoBehaviour
         public float globalFriction;
         public float globalPushStrength;
         public float globalDashStrength;
+        public float globalCanTurn;
         public bool debug;
     }
 

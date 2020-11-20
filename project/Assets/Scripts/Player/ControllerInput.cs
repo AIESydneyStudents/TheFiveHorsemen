@@ -47,7 +47,7 @@ public class ControllerInput : MonoBehaviour
             exists = true;
         }
 
-        return exists;
+        return PlayerManager.settings.debug || exists;
     }
 
     public float GetHorizontalAxis()
@@ -93,6 +93,24 @@ public class ControllerInput : MonoBehaviour
     public void UpdateCameraPosition(Camera cam, int cams)
     {
         // Welcome to cancer!
-        cam.rect = ControllerInputConfig.splitScreenController[cams - 2].splits[(int)selectedController - 1].viewPort;
+        int index = cams;
+
+        switch (cams)
+        {
+            case 1:
+                index = -1;
+                break;
+            case 2:
+                index = 0;
+                break;
+            case 3:
+                index = 1;
+                break;
+            case 4:
+                index = 2;
+                break;
+        }
+
+        cam.rect = ControllerInputConfig.splitScreenController[index].splits[(int)selectedController - 1].viewPort;
     }
 }
