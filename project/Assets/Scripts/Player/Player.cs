@@ -53,8 +53,6 @@ public class Player : ControllerInput
 
         startPos = transform.position;
 
-        GameObject newObj = new GameObject("Name");
-
         startCamPos = followCam.transform.localPosition;
 
         controller = GetComponent<CharacterController>();
@@ -164,6 +162,7 @@ public class Player : ControllerInput
         float gravity = PlayerManager.settings.globalGravity;
         float jumpHeight = PlayerManager.settings.globalJumpHeight;
         float friction = PlayerManager.settings.globalFriction;
+        float canTurn = PlayerManager.settings.globalCanTurn;
 
         if (ragdollTimer > 0)
         {
@@ -176,11 +175,21 @@ public class Player : ControllerInput
             xPos += GetHorizontalAxis();
             yPos += GetVerticalAxis();
         }
-        //transform.Rotate(0, xPos, 0);
 
-        moveDirection = new Vector3(character.right.x * -yPos + velocity.x, (jumping ? moveDirection.y : 0) + velocity.y, character.right.z * -yPos + velocity.z);
+        // Direction
+        Vector3 f = followCam.transform.forward;
+        Vector3 r = followCam.transform.right;
 
-        Vector3 right = character.forward;
+        f.y = 0f;
+        r.y = 0f;
+
+        f.Normalize();
+        r.Normalize();
+        //
+
+        moveDirection = new Vector3(f.x * yPos + velocity.x, (jumping ? moveDirection.y : 0) + velocity.y, f.z * yPos + velocity.z);
+
+        Vector3 right = r;
         right *= xPos;
 
         moveDirection = right + moveDirection;
@@ -206,43 +215,37 @@ public class Player : ControllerInput
         {
             Climb(yPos);
         }
-        //aaron code fort animations
-
-        //**
-        //if (moveDirection.z == 0)
-        //{
-        //    animator_test_A.SetBool("idle", true);
-        //}
-        //else
-        //{
-        //  animator_test_A.SetBool("idle", false);
-        //}
-        //
 
         if (!climbing)
         {
             moveDirection.y -= Time.deltaTime * gravity * (jumping ? 1 : 10);
         }
-        //else moveDirection.y += 1 * Time.deltaTime;
 
         if (transform.parent != null && !jumping && !ragdolled && GetHorizontalAxis() == 0 && GetVerticalAxis() == 0 && velocity.x == 0 && velocity.y == 0)
         {
             animator_test_A.SetBool("Running", false);
             animator_test_A.SetBool("Idle", true);
-            //return;
         }
         else controller.Move(moveDirection * moveSpeed * Time.deltaTime);
 
-        followCam.transform.localPosition = new Vector3(followCam.transform.localPosition.x, startCamPos.y + (-3 * GetRVerticalAxis()), followCam.transform.localPosition.z);
+        //followCam.transform.localPosition = new Vector3(followCam.transform.localPosition.x, startCamPos.y + (-3 * GetRVerticalAxis()), followCam.transform.localPosition.z);
 
-        followCam.transform.LookAt(cameraAnchor);
-        followCam.transform.RotateAround(transform.position, new Vector3(0.0f, 1.0f, 0.0f), turnSpeed * GetRHorizontalAxis());
+        //followCam.transform.LookAt(cameraAnchor);
+        //followCam.transform.RotateAround(transform.position, new Vector3(0.0f, 1.0f, 0.0f), turnSpeed * GetRHorizontalAxis());
 
-        Vector3 rot = followCam.transform.eulerAngles;
-        rot.x = 0;
-        rot.y += 90f;
-        character.eulerAngles = rot;
-        //followCam.transform.Translate(Vector3.right * GetRHorizontalAxis());
+        //Vector3 rot = followCam.transform.eulerAngles;
+        //rot.x = 0;
+        //rot.y += 90f;
+        //rot.eulerAngles = new Vector3(0, rot.eulerAngles.y + turnSpeed * GetHorizontalAxis() * Time.deltaTime, 0 );
+
+        float turnRate = new Vector2(GetHorizontalAxis(), GetVerticalAxis()).sqrMagnitude;
+        if (canTurn <= turnRate)
+        {
+            Quaternion rot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDirection), turnSpeed / 10);
+            rot.eulerAngles = new Vector3(0, rot.eulerAngles.y, 0);
+
+            transform.rotation = rot;
+        }
 
         float mult = friction/100;
 
@@ -253,8 +256,6 @@ public class Player : ControllerInput
         if (velocity.z > 0.1 || velocity.z < -0.1)
             velocity.z = velocity.z > 0.1 ? velocity.z - mult : velocity.z + mult;
         else velocity.z = 0;
-
-        //if (ragdolled) Ragdoll();
 
         xPos = 0;
         yPos = 0;
@@ -368,29 +369,17 @@ public class Player : ControllerInput
         Move();
 
         if (pushCooldown > 0) pushCooldown -= Time.deltaTime;
-        cooldown.value = Mathf.Clamp(pushCooldown, 0, abilityCooldown);
+        cooldown.value = Mathf.Clamp(abilityCooldown-pushCooldown, 0, abilityCooldown);
 
         if (dashing)
         {
-            if (pushCooldown <= 2.5)
-                //if (pushCooldown <= 0)
+            if (pushCooldown <= (abilityCooldown - 0.5f))
             { 
                 dashing = false;
             }
             Push();
             CreateDust();
         }
-
-       // if (dashing)
-      //  {
-       //     if (pushCooldown <= 2.99)
-            //if (pushCooldown <= 0)
-       //     {
-       //         dashing = false;
-       //     }
-            
-       //     CreateDust();
-      //  }
 
 
         if (!dashing && Clicking() && pushCooldown <= 0 && !dead && !ragdolled)
@@ -413,27 +402,38 @@ public class Player : ControllerInput
         {
             controllerCache = ControllerInput.available;
             UpdateCameraPosition(followCam, ControllerInput.available);
+
+            //Rect cRect = followCam.rect;
+            RectTransform sliderRect;
+            RectTransform canvasRect;
+
+            Transform parent = cooldown.transform.parent;
+
+            if (parent.TryGetComponent(out canvasRect) && cooldown.TryGetComponent(out sliderRect))
+            {
+                sliderRect.anchoredPosition = new Vector2(canvasRect.rect.width - sliderRect.rect.width/1.5f, -sliderRect.rect.height/2);
+            }
         }
 
         {
-            RaycastHit hit;
+            //RaycastHit hit;
 
-            int layerMask = 1 << 9;
-            layerMask = ~layerMask;
+            //int layerMask = 1 << 9;
+            //layerMask = ~layerMask;
 
-            float distance = 3.16f;
+            //float distance = 3.16f;
 
-            Vector3 origin = cameraAnchor.position;
-            Vector3 direction = followCam.transform.forward * -1;
-            Vector3 final = origin + (direction * distance);
+            //Vector3 origin = cameraAnchor.position;
+            //Vector3 direction = followCam.transform.forward * -1;
+            //Vector3 final = origin + (direction * distance);
 
-            if (PlayerManager.settings.debug) Debug.DrawLine(origin, final, Color.red);
+            //if (PlayerManager.settings.debug) Debug.DrawLine(origin, final, Color.red);
 
-            if (Physics.Raycast(origin, direction, out hit, distance, layerMask))
-            { 
-                followCam.transform.position = hit.point; 
-            }
-            else followCam.transform.position = final;
+            //if (Physics.Raycast(origin, direction, out hit, distance, layerMask))
+            //{ 
+            //    followCam.transform.position = hit.point; 
+            //}
+            //else followCam.transform.position = final;
         }
     }
     #endregion

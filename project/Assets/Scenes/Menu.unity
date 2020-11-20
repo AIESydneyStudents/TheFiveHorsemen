@@ -669,6 +669,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3521891087638692323, guid: 0630b206bb5513746878c53833ed075e,
+        type: 3}
+      propertyPath: _playerSettings.debug
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3521891087638692323, guid: 0630b206bb5513746878c53833ed075e,
+        type: 3}
+      propertyPath: _playerSettings.globalCanTurn
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 3521891087638692348, guid: 0630b206bb5513746878c53833ed075e,
         type: 3}
       propertyPath: m_Name
