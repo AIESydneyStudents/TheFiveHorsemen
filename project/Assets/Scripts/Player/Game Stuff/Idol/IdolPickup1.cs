@@ -18,8 +18,7 @@ public class IdolPickup1 : MonoBehaviour
                 idolPickup.Play();
                 pickuptime = Time.time + 5f;
 <<<<<<< Updated upstream
-                idolPickup.Play(true);
-                idolPickup.Stop(false);
+                
 =======
                 
 >>>>>>> Stashed changes
@@ -38,8 +37,6 @@ public class IdolPickup1 : MonoBehaviour
                 pickuptime = -1f;
 <<<<<<< Updated upstream
 <<<<<<< HEAD
-                idolPickup.Play(true);
-                idolPickup.Stop(false);
 =======
                 
 >>>>>>> master
