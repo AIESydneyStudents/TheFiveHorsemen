@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 8461446653946669693}
   - component: {fileID: 5601294395728861753}
   - component: {fileID: 7960559355226088062}
+  - component: {fileID: 6157833370117676339}
   m_Layer: 0
   m_Name: CurvedStair_Right
   m_TagString: Untagged
@@ -89,7 +90,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df8e3f34543d563488df3fdeaedc7d5a, type: 2}
+  - {fileID: 2100000, guid: 97d475400182f034e83fb70b32594007, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,3 +111,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &6157833370117676339
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6654065044089991966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8773161430591544382, guid: 7a204e33dafa5b342b991a912739cf6a, type: 3}
