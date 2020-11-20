@@ -1,6 +1,7 @@
 sceneSetups:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 - path: Assets/SandBox/Jacob/13_11/Dev Scene.unity
 =======
@@ -34,6 +35,9 @@ sceneSetups:
 - path: Assets/SandBox/Callum/savedlevel;/callum small level 13.11.unity
 >>>>>>> c6be05817474455f3b334904e9d6c5b3b00b12e6
 >>>>>>> master
+=======
+- path: Assets/SandBox/Callum/SpiralLevel/SpiralLevelDay2.unity
+>>>>>>> Stashed changes
   isLoaded: 1
   isActive: 1
   isSubScene: 0
