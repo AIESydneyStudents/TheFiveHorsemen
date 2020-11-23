@@ -15,9 +15,13 @@ public class IdolPickup1 : MonoBehaviour
         {
             if (pickuptime == -1f)
             {
+                idolPickup.Play();
                 pickuptime = Time.time + 5f;
-                idolPickup.Play(true);
-                idolPickup.Stop(false);
+<<<<<<< Updated upstream
+                
+=======
+                
+>>>>>>> Stashed changes
             }
         }
     }
@@ -31,7 +35,14 @@ public class IdolPickup1 : MonoBehaviour
             if (pickuptime != -1f && pickuptime < Time.time)
             {
                 pickuptime = -1f;
+<<<<<<< Updated upstream
+<<<<<<< HEAD
+=======
                 
+>>>>>>> master
+=======
+                
+>>>>>>> Stashed changes
                 ya.EndGame();
             }
         }
@@ -44,8 +55,8 @@ public class IdolPickup1 : MonoBehaviour
         if (other.transform.TryGetComponent<Player>(out ya))
         {
             pickuptime = -1f;
-            idolPickup.Stop(true);
-            idolPickup.Play(false);
+            idolPickup.Stop();
+            
         }
     }
 }
