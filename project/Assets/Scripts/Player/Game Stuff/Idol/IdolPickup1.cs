@@ -17,11 +17,6 @@ public class IdolPickup1 : MonoBehaviour
             {
                 idolPickup.Play();
                 pickuptime = Time.time + 5f;
-<<<<<<< Updated upstream
-                
-=======
-                
->>>>>>> Stashed changes
             }
         }
     }
@@ -35,14 +30,7 @@ public class IdolPickup1 : MonoBehaviour
             if (pickuptime != -1f && pickuptime < Time.time)
             {
                 pickuptime = -1f;
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-=======
-                
->>>>>>> master
-=======
-                
->>>>>>> Stashed changes
+
                 ya.EndGame();
             }
         }

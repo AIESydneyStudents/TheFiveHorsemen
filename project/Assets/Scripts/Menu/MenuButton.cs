@@ -21,11 +21,9 @@ public class MenuButton : MonoBehaviour
     [SerializeField] private Transform fall;
     [SerializeField] private Vector3 fallBack;
     [SerializeField] private bool shouldFall;
-    [SerializeField] private int sceneTo;
     [SerializeField] private dissapear[] dissapears;
-    [SerializeField] private Vector3 cameraPos;
-    [SerializeField] private Vector3 cameraAng;
     [SerializeField] private AudioSource fallAudio;
+    [SerializeField] private UnityEngine.Events.UnityEvent finishTask;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +62,9 @@ public class MenuButton : MonoBehaviour
         {
             if (shouldFall)
             {
+                //Rigidbody bro = gameObject.AddComponent(typeof(Rigidbody)) as Rigidbody;
+                //bro.velocity = fallBack * -80f;
+
                 foreach (Transform child in fall)
                 {
                     Rigidbody go;
@@ -73,8 +74,17 @@ public class MenuButton : MonoBehaviour
                     {
                         go = child.gameObject.AddComponent(typeof(Rigidbody)) as Rigidbody;
                         go.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+                        go.velocity = fallBack * -30f;
+                    }
+
+                    MenuButton mb;
+                    if (child != transform && child.gameObject.TryGetComponent(out mb))
+                    {
+                        Destroy(mb, 0);
                     }
                 }
+
+                fall.DetachChildren();
             }
 
             finished = true;
@@ -98,21 +108,23 @@ public class MenuButton : MonoBehaviour
 
             if (ready == dissapears.Length)
             {
-                if (brickValue == 2 || brickValue == 3)
-                {
-                    //Camera.main.transform.position = cameraPos;
-                    //Camera.main.transform.position = cameraAng;
-                    gameObject.SetActive(false);
-                    ControllerInput.available = 0;
+                finishTask.Invoke();
 
-                    int level = (brickValue == 3) ? sceneTo : Random.Range(1, sceneTo + 1);
-                    UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(level);
-                }
+                //if (brickValue == 2 || brickValue == 3)
+                //{
+                //    //Camera.main.transform.position = cameraPos;
+                //    //Camera.main.transform.position = cameraAng;
+                //    gameObject.SetActive(false);
+                //    ControllerInput.available = 0;
 
-                if (brickValue == 1)
-                {
-                    Application.Quit();
-                }
+                //    int level = (brickValue == 3) ? sceneTo : Random.Range(1, sceneTo + 1);
+                //    UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(level);
+                //}
+
+                //if (brickValue == 1)
+                //{
+                //    Application.Quit();
+                //}
             }
             //if (Brickvalue == 3)
             //{

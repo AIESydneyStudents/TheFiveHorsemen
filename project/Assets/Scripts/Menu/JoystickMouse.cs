@@ -9,13 +9,13 @@ public class JoystickMouse : ControllerInput
     [Header("Controls")]
     [SerializeField] private float cursorPosX = 600f;
     [SerializeField] private float cursorPosY = 800f;
-
     [SerializeField] private float mouseSpeed = 1f;
+    [SerializeField] private Transform cam; // Isn't needed.
+    [SerializeField] private Vector3 camStartPos; 
 
     public override void Start()
     {
         base.Start();
-
         canvas = GetComponentInParent<Canvas>().pixelRect;
     }
 
@@ -31,6 +31,11 @@ public class JoystickMouse : ControllerInput
 
         //transform.Rotate(0, xPos, 0);
         transform.position = new Vector3(cursorPosX, cursorPosY, 0);
+
+        if (cam != null)
+        {
+            cam.transform.position = new Vector3(camStartPos.x + cursorPosX / canvas.width * 0.8f, camStartPos.y + cursorPosY/canvas.height * 0.5f, camStartPos.z);
+        }
     }
 
     void FixedUpdate()
