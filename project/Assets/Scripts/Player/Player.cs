@@ -32,6 +32,7 @@ public class Player : ControllerInput
     private bool climbing = false;
 
     private bool finished = false;
+    private int selected = -1;
     #endregion
 
     #region Editor Fields
@@ -45,6 +46,7 @@ public class Player : ControllerInput
     [SerializeField] private GameObject ragdoll;
     [SerializeField] private Slider cooldown;
     [SerializeField] private GameObject wonOverlay;
+    [SerializeField] private SkinnedMeshRenderer characterBody;
     #endregion
 
     public override void Start()
@@ -59,6 +61,21 @@ public class Player : ControllerInput
 
         cooldown.maxValue = abilityCooldown;
         transform.Rotate(0, -90, 0);
+
+        for (int i = 0; i < PlayerManager.characters.Length; i++)
+        {
+            if (PlayerManager.characters[i].controller == GetSelectedController())
+            {
+                selected = i;
+                break;
+            }
+        }
+
+        if (PlayerManager.settings.debug || selected != -1)
+        {
+            characterBody.material = PlayerManager.characters[selected].body;
+        }
+        else gameObject.SetActive(false);
     }
 
     #region Functionality
@@ -239,7 +256,7 @@ public class Player : ControllerInput
         //rot.eulerAngles = new Vector3(0, rot.eulerAngles.y + turnSpeed * GetHorizontalAxis() * Time.deltaTime, 0 );
 
         float turnRate = new Vector2(GetHorizontalAxis(), GetVerticalAxis()).sqrMagnitude;
-        if (canTurn <= turnRate)
+        if (canTurn <= turnRate && !climbing)
         {
             Quaternion rot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDirection), turnSpeed / 10);
             rot.eulerAngles = new Vector3(0, rot.eulerAngles.y, 0);
@@ -332,6 +349,10 @@ public class Player : ControllerInput
     public void EndGame()
     {
         wonOverlay.SetActive(true);
+
+        int level = 4;
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(level);
+
         finished = true;
     }
 
@@ -398,10 +419,13 @@ public class Player : ControllerInput
             animator_test_A.SetBool("Run_Push", false);
         }
 
-        if (controllerCache != ControllerInput.available)
+        int avail = PlayerManager.characters.Length - 1;
+        if (PlayerManager.settings.debug) avail = ControllerInput.available;
+
+        if (controllerCache != avail)
         {
-            controllerCache = ControllerInput.available;
-            UpdateCameraPosition(followCam, ControllerInput.available);
+            controllerCache = avail;
+            UpdateCameraPosition(followCam, avail);
 
             //Rect cRect = followCam.rect;
             RectTransform sliderRect;

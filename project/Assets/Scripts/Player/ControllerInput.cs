@@ -90,6 +90,11 @@ public class ControllerInput : MonoBehaviour
         return (controllerExists) ? Input.GetButton(controllerInput + "_Back") : false;
     }
 
+    public availableControllers GetSelectedController()
+    {
+        return selectedController;
+    }
+
     public void UpdateCameraPosition(Camera cam, int cams)
     {
         // Welcome to cancer!

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    static public ControllerInput.availableControllers winner;
     static public settingsInfo settings;
     static public characterInfo[] characters;
 
@@ -20,9 +21,8 @@ public class PlayerManager : MonoBehaviour
     [System.Serializable]
     public struct characterInfo
     {
-        public string name;
-        public GameObject prefab;
-        public Texture2D profile;
+        public ControllerInput.availableControllers controller;
+        public Material body;
     }
 
     [System.Serializable]

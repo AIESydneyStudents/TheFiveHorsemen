@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 18794a5bfe70c8b4dba912570db159f4
   - enabled: 1
+    path: Assets/Scenes/Select.unity
+    guid: 463b6d0bbc328f84ab7c70e44cc83119
+  - enabled: 1
+    path: Assets/Scenes/SceneLoader.unity
+    guid: 12cc780cf749b8e41b755996512e2941
+  - enabled: 1
     path: Assets/SandBox/Jacob/13_11/Dev Scene.unity
     guid: 4f1870b8b216b374f8a505354de69209
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: 2e7c3d4718d377f43820f9278e62ebdb
   m_configObjects: {}
