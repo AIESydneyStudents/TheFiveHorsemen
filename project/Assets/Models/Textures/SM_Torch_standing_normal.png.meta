@@ -1,21 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
-<<<<<<< HEAD
 guid: ea3735cc9294b7443946840e2f728af6
-=======
-<<<<<<< Updated upstream
-guid: ea3735cc9294b7443946840e2f728af6
-=======
-guid: c33e27b03771d844080f05b344fce251
->>>>>>> Stashed changes
->>>>>>> master
-=======
-<<<<<<< Updated upstream
-guid: ea3735cc9294b7443946840e2f728af6
-=======
-guid: 4782f0b6dbc8a904d9f4089c9fd99cd9
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -23,7 +7,7 @@ TextureImporter:
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
-    sRGBTexture: 1
+    sRGBTexture: 0
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -67,13 +51,13 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
-  textureType: 0
-  textureShape: 1
+  textureType: 1
+  textureShape: 2
   singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  applyGammaDecoding: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
