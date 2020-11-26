@@ -24,7 +24,7 @@ public class MenuButton : MonoBehaviour
     [SerializeField] private dissapear[] dissapears;
     [SerializeField] private AudioSource fallAudio;
     [SerializeField] private UnityEngine.Events.UnityEvent finishTask;
-
+    [SerializeField] private bool reset = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -85,6 +85,7 @@ public class MenuButton : MonoBehaviour
                 }
 
                 fall.DetachChildren();
+                if (!fallAudio.isPlaying) fallAudio.Play();
             }
 
             finished = true;
@@ -92,8 +93,6 @@ public class MenuButton : MonoBehaviour
         else if (finished)
         {
             int ready = 0;
-
-            if (!fallAudio.isPlaying) fallAudio.Play();
 
             for (int i = 0; i < dissapears.Length; i++)
             {
@@ -109,6 +108,7 @@ public class MenuButton : MonoBehaviour
             if (ready == dissapears.Length)
             {
                 finishTask.Invoke();
+                if (reset) finished = false;
 
                 //if (brickValue == 2 || brickValue == 3)
                 //{

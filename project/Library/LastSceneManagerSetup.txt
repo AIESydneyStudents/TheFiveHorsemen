@@ -1,9 +1,5 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/SandBox/Jacob/13_11/Dev Scene.unity
-=======
-- path: Assets/SandBox/Callum/savingbthelevlonceagain/callum small level 13.11.unity
->>>>>>> 3abd53307ce237f47f793aea6ec34d82ca361566
+- path: Assets/Scenes/SceneLoader.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

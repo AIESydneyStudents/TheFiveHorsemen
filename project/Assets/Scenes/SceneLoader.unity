@@ -804,8 +804,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9989803bd2803541adfe0d755cf9acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneFrom: 3
-  sceneTo: 3
+  sceneFrom: 7
+  sceneTo: 8
   timerDelay: 10
 --- !u!1 &2029480309
 GameObject:

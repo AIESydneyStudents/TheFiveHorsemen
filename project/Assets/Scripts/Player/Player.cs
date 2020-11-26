@@ -350,10 +350,12 @@ public class Player : ControllerInput
     {
         wonOverlay.SetActive(true);
 
-        int level = 4;
+        int level = 6;
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(level);
 
         finished = true;
+
+        PlayerManager.winner = GetSelectedController();
     }
 
     /// <summary>

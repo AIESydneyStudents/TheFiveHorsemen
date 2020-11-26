@@ -5,6 +5,8 @@ using UnityEngine;
 public class SimpleTimer : MonoBehaviour
 {
     private float timer = 0f;
+    private bool finished = false;
+
     public int sceneFrom = 1;
     public int sceneTo = 2;
     public float timerDelay = 1f;
@@ -17,8 +19,9 @@ public class SimpleTimer : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (timer < Time.time)
+        if (timer < Time.time && !finished)
         {
+            finished = true;
             ControllerInput.available = 0;
 
             int level = Random.Range(sceneFrom, sceneTo + 1);

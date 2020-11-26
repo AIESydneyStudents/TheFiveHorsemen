@@ -49,5 +49,7 @@ public class PlayerManager : MonoBehaviour
     {
         characters = _characters;
         settings = _playerSettings;
+
+        winner = 0;
     }
 }
