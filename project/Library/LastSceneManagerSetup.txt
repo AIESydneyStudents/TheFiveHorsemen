@@ -1,9 +1,13 @@
 sceneSetups:
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 - path: Assets/Scenes/Menu.unity
 =======
 - path: Assets/SandBox/Callum/savingbthelevlonceagain/Level1-26.11.unity
 >>>>>>> f830baa5833b5901a56e7a48d97147622530e5b9
+=======
+- path: Assets/Scenes/Galleryv5.unity
+>>>>>>> Stashed changes
   isLoaded: 1
   isActive: 1
   isSubScene: 0
