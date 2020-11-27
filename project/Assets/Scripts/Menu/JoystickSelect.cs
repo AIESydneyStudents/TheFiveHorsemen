@@ -7,6 +7,7 @@ public class JoystickSelect : ControllerInput
     static public int playersPlaying = 0;
 
     public UnityEngine.UI.Text text;
+    public GameObject img;
     public Material[] choices;
     public SkinnedMeshRenderer mouse;
 
@@ -48,6 +49,7 @@ public class JoystickSelect : ControllerInput
             timer = Time.time + 0.5f;
 
             mouse.enabled = joined;
+            img.SetActive(!joined);
 
             PlayerManager.characterInfo[] old = PlayerManager.characters;
 
