@@ -20,10 +20,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3829823524982730753, guid: c41527603ed00834c996e76da088458e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: de4c6bbe93d309746a5fad018f58e161, type: 2}
     - target: {fileID: 3829823524982730810, guid: c41527603ed00834c996e76da088458e,
         type: 3}
       propertyPath: m_Name
-      value: PushBoulder
+      value: PushBoulder Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3829823524982730813, guid: c41527603ed00834c996e76da088458e,
         type: 3}
